@@ -1,41 +1,34 @@
-# Pixel Quest Portfolio
+# DONGHO.K Portfolio
 
-Three.js 오프닝과 2D 도트 그래픽 상태창을 결합한 게임형 개인 포트폴리오 예시입니다.
+Dark themed frontend portfolio for Keum Dong-ho, built with static HTML, CSS, and JavaScript.
 
-## 현재 구현된 흐름
+## Sections
 
-1. 3D 컴퓨터가 위에서 떨어져 착지합니다.
-2. 모니터 화면이 켜지고 `START` 버튼이 나타납니다.
-3. 화면을 누르면 모니터 안으로 빨려 들어가는 듯한 줌 모션이 실행됩니다.
-4. 2D 도트 스타일 로딩 화면으로 전환됩니다.
-5. 로딩이 끝나면 왼쪽에는 도트 캐릭터, 오른쪽에는 상태창이 뜹니다.
-6. 상태창에서 정보, 기술스택, 프로젝트, 이력, 연락 탭을 전환할 수 있습니다.
+- Hero
+- Skills
+- Projects carousel
+- Project detail modal
+- Education history
 
-첫 화면은 하얀 배경의 방, 테이블, 위에서 떨어지는 컴퓨터로 시작합니다. Three.js는 로컬 파일(`assets/vendor/three.module.js`)로 불러오며, WebGL이 막힌 환경에서도 CSS 컴퓨터가 보이도록 fallback을 같이 둡니다. 이후 로딩 화면과 도트 포트폴리오 UI는 HTML/CSS/Vanilla JS로 동작하며, 전환 후 WebGL 렌더링 루프는 종료됩니다.
+## Run
 
-## 실행
-
-ES module과 Three.js CDN을 사용하므로 로컬 서버에서 실행하는 편이 안전합니다.
+This site has no build step.
 
 ```bash
 python -m http.server 5173 --bind 127.0.0.1
 ```
 
-브라우저에서 아래 주소를 열면 됩니다.
+Open:
 
 ```text
 http://127.0.0.1:5173/index.html
 ```
 
-## 다음에 바꾸면 좋은 부분
+## Edit Content
 
-- `PLAYER_01`, `LV. 27`, 소개 문구를 본인 정보로 교체
-- 도트 캐릭터의 머리, 옷 색상, 이름표를 본인 스타일에 맞게 수정
-- 프로젝트 탭의 항목을 실제 GitHub/배포 링크로 연결
-- 배포 시 GitHub Pages 또는 Vercel 사용
+Main editable data lives in `script.js`.
 
-## 배포 추천
+- `skillGroups`
+- `projects`
 
-- 빠른 시작: GitHub Pages
-- 도메인 연결과 확장성: Vercel
-- 개인 브랜딩: `이름.dev`, `이름.com`, `이름.me` 순서로 추천
+Education copy is in `index.html`; styling is in `styles.css`.

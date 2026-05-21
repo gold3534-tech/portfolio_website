@@ -5,165 +5,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Three.js 오프닝과 2D 도트 그래픽 상태창으로 구성한 게임형 개인 포트폴리오"
+      content="Frontend Developer + AI Engineer 금동호의 포트폴리오입니다. React, TypeScript, AI Agent, RAG 프로젝트와 교육 이력을 소개합니다."
     />
-    <meta property="og:title" content="Pixel Quest Portfolio" />
+    <meta property="og:title" content="금동호 | Frontend Developer + AI Engineer" />
     <meta
       property="og:description"
-      content="컴퓨터가 떨어지고, 화면 속으로 빨려 들어간 뒤 도트 캐릭터와 상태창으로 탐색하는 포트폴리오"
+      content="기술로 복잡한 문제를 풀고, 사용자 경험으로 표현하는 프론트엔드 개발자 포트폴리오입니다."
     />
     <meta property="og:type" content="website" />
-    <title>Pixel Quest Portfolio</title>
+    <title>금동호 | Frontend Developer + AI Engineer</title>
     <link rel="stylesheet" href="./styles.css" />
+    <script src="./script.js" defer></script>
   </head>
   <body>
-    <main class="game-shell" data-scene="intro">
-      <section class="intro-scene" aria-label="테이블 위로 컴퓨터가 떨어지는 오프닝">
-        <canvas id="computer-canvas" aria-hidden="true"></canvas>
-        <div class="fallback-room" aria-hidden="true">
-          <div class="fallback-table">
-            <span class="table-top"></span>
-            <span class="table-leg leg-a"></span>
-            <span class="table-leg leg-b"></span>
-            <span class="table-leg leg-c"></span>
-            <span class="table-leg leg-d"></span>
-          </div>
-          <div class="fallback-computer">
-            <div class="fallback-monitor">
-              <span class="fallback-screen"></span>
-              <span class="fallback-glow"></span>
-            </div>
-            <span class="fallback-stand"></span>
-            <span class="fallback-base"></span>
-            <div class="fallback-keyboard">
-              <span></span><span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span><span></span>
-            </div>
-          </div>
-        </div>
-        <div class="room-light"></div>
-        <div class="intro-hud">
-          <p class="system-label">DROP SEQUENCE READY</p>
-          <h1>PORTFOLIO<br />DESK</h1>
-          <p class="intro-copy">
-            컴퓨터가 테이블 위에 착지하면 화면이 켜집니다. 모니터의 START를 눌러 2D 세계로 입장하세요.
-          </p>
-        </div>
-        <button class="screen-button" type="button" data-enter-screen>
-          <span>START</span>
-          <small>CLICK MONITOR</small>
-        </button>
-      </section>
+    <header class="site-header">
+      <a class="logo" href="#top">DONGHO.K</a>
+      <nav class="nav-links" aria-label="주요 메뉴">
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="https://github.com/gold3534-tech" target="_blank" rel="noreferrer">GitHub</a>
+      </nav>
+    </header>
 
-      <section class="warp-scene" aria-hidden="true">
-        <div class="warp-rings"></div>
-        <div class="pixel-rain"></div>
-        <p>ENTERING PIXEL WORLD</p>
-      </section>
-
-      <section class="loading-scene" aria-label="도트 로딩 화면">
-        <div class="loading-window">
-          <div class="loading-title">NOW LOADING</div>
-          <div class="pixel-loader" aria-hidden="true">
-            <span></span><span></span><span></span><span></span><span></span>
-          </div>
-          <div class="loading-bar"><span data-loading-bar></span></div>
-          <p data-loading-text>프로필 데이터를 불러오는 중...</p>
+    <main id="top">
+      <section class="hero">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Frontend Developer + AI Engineer</p>
+          <h1>금동호</h1>
+          <p class="hero-copy">기술로 복잡한 문제를 풀고, 사용자 경험으로 표현합니다</p>
+          <a class="primary-button" href="#projects">프로젝트 보기</a>
         </div>
       </section>
 
-      <section class="portfolio-scene" aria-label="도트 포트폴리오 상태창">
-        <div class="pixel-stage">
-          <div class="pixel-sky"></div>
-          <div class="pixel-floor"></div>
-          <div class="character-wrap" aria-label="내 모습을 닮은 도트 캐릭터">
-            <div class="pixel-character">
-              <span class="hair"></span>
-              <span class="head"></span>
-              <span class="neck"></span>
-              <span class="body"></span>
-              <span class="arm arm-left"></span>
-              <span class="arm arm-right"></span>
-              <span class="leg leg-left"></span>
-              <span class="leg leg-right"></span>
-              <span class="shoe shoe-left"></span>
-              <span class="shoe shoe-right"></span>
-            </div>
-            <div class="name-tag">PLAYER_01</div>
-          </div>
+      <section class="section" id="skills">
+        <div class="section-heading">
+          <p>SKILLS</p>
+          <h2>기술 스택</h2>
         </div>
+        <div class="skills-grid" id="skills-grid"></div>
+      </section>
 
-        <aside class="status-window">
-          <header class="window-header">
-            <div>
-              <p class="system-label">CHARACTER STATUS</p>
-              <h2>플레이어 정보</h2>
-            </div>
-            <span class="level-badge">LV. 27</span>
-          </header>
-
-          <nav class="tab-list" aria-label="포트폴리오 탭">
-            <button class="tab is-active" type="button" data-tab="profile">정보</button>
-            <button class="tab" type="button" data-tab="skills">기술스택</button>
-            <button class="tab" type="button" data-tab="projects">프로젝트</button>
-            <button class="tab" type="button" data-tab="resume">이력</button>
-            <button class="tab" type="button" data-tab="contact">연락</button>
-          </nav>
-
-          <div class="tab-panels">
-            <article class="tab-panel is-active" data-panel="profile">
-              <h3>소개</h3>
-              <p>
-                사용자 경험을 게임처럼 기억에 남게 만들면서도, 실제 정보는 빠르게 읽히도록 설계하는
-                프론트엔드 개발자입니다.
-              </p>
-              <dl class="stat-list">
-                <div><dt>Class</dt><dd>Frontend Developer</dd></div>
-                <div><dt>Specialty</dt><dd>Interaction UI</dd></div>
-                <div><dt>Mode</dt><dd>Available for work</dd></div>
-              </dl>
-            </article>
-
-            <article class="tab-panel" data-panel="skills">
-              <h3>기술스택</h3>
-              <div class="skill-row"><span>HTML/CSS</span><strong style="--value: 94%"></strong></div>
-              <div class="skill-row"><span>JavaScript</span><strong style="--value: 88%"></strong></div>
-              <div class="skill-row"><span>React/Next.js</span><strong style="--value: 84%"></strong></div>
-              <div class="skill-row"><span>Three.js/Motion</span><strong style="--value: 76%"></strong></div>
-            </article>
-
-            <article class="tab-panel" data-panel="projects">
-              <h3>프로젝트</h3>
-              <ul class="quest-list">
-                <li><b>Realtime Dashboard</b><span>운영 데이터를 빠르게 탐색하는 대시보드</span></li>
-                <li><b>Case Study Archive</b><span>MDX 기반 프로젝트 회고 아카이브</span></li>
-                <li><b>Interactive Landing</b><span>모션과 영상 기반 브랜드 페이지</span></li>
-              </ul>
-            </article>
-
-            <article class="tab-panel" data-panel="resume">
-              <h3>이력</h3>
-              <ol class="timeline">
-                <li><time>2026</time><span>게임형 포트폴리오 제작 및 배포</span></li>
-                <li><time>2025</time><span>프론트엔드 프로젝트 리드</span></li>
-                <li><time>2024</time><span>UI 컴포넌트와 반응형 화면 구축</span></li>
-              </ol>
-            </article>
-
-            <article class="tab-panel" data-panel="contact">
-              <h3>연락</h3>
-              <p>메일, GitHub, LinkedIn 링크를 실제 정보로 바꿔 사용하세요.</p>
-              <div class="contact-links">
-                <a href="mailto:your.email@example.com">Email</a>
-                <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
-                <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
-              </div>
-            </article>
+      <section class="section" id="projects">
+        <div class="section-heading">
+          <p>PROJECTS</p>
+          <h2>프로젝트</h2>
+        </div>
+        <div class="carousel-shell">
+          <button class="carousel-button prev" type="button" aria-label="이전 프로젝트">‹</button>
+          <div class="carousel-viewport">
+            <div class="carousel-track" id="project-track"></div>
           </div>
-        </aside>
+          <button class="carousel-button next" type="button" aria-label="다음 프로젝트">›</button>
+        </div>
+        <div class="carousel-dots" id="project-dots" aria-label="프로젝트 위치"></div>
+      </section>
+
+      <section class="section education-section" id="education">
+        <div class="section-heading">
+          <p>EDUCATION</p>
+          <h2>교육 이력</h2>
+        </div>
+        <article class="education-card">
+          <div class="education-main">
+            <p class="education-period">2025.12 - 진행중</p>
+            <h3>데이터 분석 및 생성형 AI 기반 자동화 시스템 개발 과정</h3>
+            <strong>청년취업사관학교 새싹(SeSAC)</strong>
+            <p>
+              Python 기반 데이터 분석부터 머신러닝, 생성형 AI, RAG, AI Agent, MCP 서버 구축까지 이어지는
+              실무형 AI 서비스 개발 과정을 학습하고 있습니다.
+            </p>
+          </div>
+          <div class="education-detail">
+            <div class="education-tags">
+              <span>Python</span><span>MySQL</span><span>BeautifulSoup</span><span>Streamlit</span>
+              <span>Docker</span><span>TensorFlow</span><span>GitHub</span>
+            </div>
+            <p>
+              Python, pandas, numpy를 활용한 데이터 전처리와 시각화, MySQL/MariaDB 연동,
+              BeautifulSoup·Selenium 기반 웹 크롤링을 실습했습니다. Streamlit으로 데이터 대시보드와
+              간단한 웹앱을 구현하고, scikit-learn, XGBoost, LightGBM을 활용해 분류·회귀 모델 학습과
+              평가를 경험했습니다.
+            </p>
+            <p>
+              생성형 AI 과정에서는 OpenAI API와 LangChain을 활용한 LLM 호출, 프롬프트 설계, 챗봇 구현을
+              실습했습니다. ChromaDB, BM25, pypdf, PyMuPDF를 활용해 문서 파싱, 임베딩, 벡터 검색 기반
+              RAG 시스템을 구현했습니다.
+            </p>
+            <p>
+              후반부에는 LangGraph, LangChain Agent, Slack SDK, MCP, FastAPI, Uvicorn, Pydantic을 활용해
+              도구 호출 기반 AI Agent와 API 서버 연동 구조를 학습했습니다. 이를 통해 데이터 수집·전처리부터
+              모델링, RAG, Agent 도구 연동, API 서버 구현까지 AI 서비스 개발 전반의 흐름을 경험했습니다.
+            </p>
+          </div>
+        </article>
       </section>
     </main>
 
-    <script type="module" src="./script.js"></script>
+    <div class="modal" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="modal-backdrop" data-close-modal></div>
+      <article class="modal-panel" role="document">
+        <button class="modal-close" type="button" data-close-modal>← 닫기</button>
+        <div id="modal-content"></div>
+      </article>
+    </div>
   </body>
 </html>

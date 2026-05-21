@@ -1,295 +1,264 @@
-import * as THREE from "./assets/vendor/three.module.js";
+const skillGroups = [
+  {
+    title: "Frontend",
+    skills: [
+      { name: "React", level: 5 },
+      { name: "TypeScript", level: 5 },
+      { name: "Tailwind", level: 5 },
+      { name: "Next.js", level: 4 },
+      { name: "Animation", level: 5 },
+    ],
+  },
+  {
+    title: "Backend & AI",
+    skills: [
+      { name: "Python", level: 5 },
+      { name: "CrewAI", level: 4 },
+      { name: "RAG/LLM", level: 4 },
+      { name: "Flask/Node.js", level: 4 },
+    ],
+  },
+  {
+    title: "Tools",
+    skills: [
+      { name: "Git", level: 5 },
+      { name: "Docker", level: 4 },
+      { name: "Figma", level: 4 },
+    ],
+  },
+];
 
-const shell = document.querySelector(".game-shell");
-const introScene = document.querySelector(".intro-scene");
-const canvas = document.querySelector("#computer-canvas");
-const enterButton = document.querySelector("[data-enter-screen]");
-const loadingBar = document.querySelector("[data-loading-bar]");
-const loadingText = document.querySelector("[data-loading-text]");
-const tabs = document.querySelectorAll("[data-tab]");
-const panels = document.querySelectorAll("[data-panel]");
+const projects = [
+  {
+    name: "AX_Orchestration_Platform",
+    summary: "CrewAI 기반 멀티 에이전트 워크플로우 시각화 플랫폼",
+    description:
+      "CrewAI 기반 멀티 에이전트 워크플로우를 시각적으로 설계하고 실행 상태를 확인할 수 있는 플랫폼입니다. 2D 도트 그래픽 애니메이션으로 작업 현황을 실시간처럼 표현해 복잡한 Agent 실행 과정을 사용자에게 이해하기 쉽게 보여주는 데 집중했습니다.",
+    stack: ["React", "TypeScript", "Canvas", "CrewAI", "Python"],
+    features: ["2D 도트 애니메이션", "실시간 업데이트", "에이전트 업무 흐름 시각화"],
+    learned: [
+      "복잡한 AI Agent 실행 흐름을 UI 상태로 분리하는 방법",
+      "Canvas와 React UI를 함께 구성하는 방식",
+      "실시간 상태 표현을 사용자 경험으로 연결하는 설계",
+      "AI 플랫폼에서 설명 가능한 화면 구조의 중요성",
+    ],
+    links: { GitHub: "https://github.com/gold3534-tech/AX_Orchestration_platform" },
+  },
+  {
+    name: "Semoduck",
+    summary: "굿즈 거래, 공식샵, 커뮤니티 기능을 갖춘 덕질 플랫폼",
+    description:
+      "덕질 사용자를 위한 풀스택 서비스입니다. 굿즈 거래, 공식샵, 커뮤니티 기능을 하나의 흐름으로 연결해 실제 운영 가능한 서비스 구조를 목표로 구현했습니다.",
+    stack: ["React", "Node.js", "MongoDB", "이커머스"],
+    features: ["풀스택", "실제 서비스 운영", "커뮤니티/커머스 연결"],
+    learned: [
+      "커뮤니티와 커머스 기능을 하나의 UX로 연결하는 방법",
+      "상품 데이터와 사용자 행동 흐름을 컴포넌트로 분리하는 방식",
+      "실제 운영을 고려한 화면 구조와 관리 기능",
+      "풀스택 서비스에서 프론트엔드가 데이터 흐름을 이해해야 하는 이유",
+    ],
+    links: { GitHub: "https://github.com/gold3534-tech/semoduck" },
+  },
+  {
+    name: "AI Card Recommendation",
+    summary: "자연어 입력으로 추천받는 RAG 기반 카드 추천 시스템",
+    description:
+      "사용자가 자연어로 원하는 조건을 입력하면 RAG 기반 검색을 통해 적합한 카드를 추천하는 시스템입니다. 단순 키워드 검색이 아니라 문맥 기반 추천 흐름을 설계하는 데 초점을 맞췄습니다.",
+    stack: ["Python", "LLM", "RAG", "Vector Database"],
+    features: ["AI/ML", "자연어 처리", "벡터 검색 기반 추천"],
+    learned: [
+      "문서 임베딩과 벡터 검색 기반 추천 구조",
+      "LLM 응답을 서비스 UX에 맞게 정리하는 방식",
+      "추천 근거를 사용자에게 설명하는 화면 구성",
+      "AI 기능을 실제 의사결정 보조 도구로 만드는 방법",
+    ],
+    links: { GitHub: "https://github.com/gold3534-tech/ai-card-recommendation-rag" },
+  },
+  {
+    name: "나들이즘",
+    summary: "카테고리 선택부터 최적 경로 추천까지 제공하는 여행 추천 앱",
+    description:
+      "사용자가 여행 카테고리를 선택하면 추천 여행지를 제시하고, 이동 경로까지 확인할 수 있도록 구성한 여행 추천 서비스입니다. 실제 사용 흐름을 고려한 UX 설계에 집중했습니다.",
+    stack: ["React", "지도 API", "추천 알고리즘"],
+    features: ["UX", "실제 서비스", "지도 기반 추천"],
+    learned: [
+      "사용자 조건 입력에서 결과 화면까지 이어지는 흐름 설계",
+      "지도 API를 활용한 위치 기반 시각화",
+      "추천 결과를 직관적으로 보여주는 UI 구성",
+      "모바일 환경에서 사용하기 쉬운 화면 구성",
+    ],
+    links: {},
+  },
+  {
+    name: "resume-interview-agent",
+    summary: "이력서 기반 면접 준비 AI Agent 서비스",
+    description:
+      "AI가 이력서를 분석하고 면접 질문을 생성해 연습할 수 있도록 돕는 실용적 AI 서비스입니다. 개인화된 질문 생성과 학습 흐름을 서비스 화면으로 연결하는 데 초점을 맞췄습니다.",
+    stack: ["React", "AI Agent", "Python"],
+    features: ["실용적 AI 서비스", "이력서 분석", "면접 질문 생성"],
+    learned: [
+      "사용자 문서를 기반으로 개인화된 AI 응답을 만드는 구조",
+      "AI Agent 기능을 서비스 흐름으로 연결하는 방식",
+      "면접 준비라는 실제 문제를 AI UX로 풀어내는 방법",
+      "프론트엔드와 Python 기반 AI 로직의 역할 분리",
+    ],
+    links: { GitHub: "https://github.com/gold3534-tech/resume-interview-agent" },
+  },
+];
 
-const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-let computerReady = false;
-let entering = false;
-let threeIntro = null;
+let currentIndex = 0;
 
-function markComputerReady() {
-  computerReady = true;
-  enterButton.classList.add("is-ready");
+function createElement(tag, className, text) {
+  const element = document.createElement(tag);
+  if (className) element.className = className;
+  if (text) element.textContent = text;
+  return element;
 }
 
-function initThreeIntro() {
-  try {
-    const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xf6f3ec);
-    scene.fog = new THREE.Fog(0xf6f3ec, 14, 28);
-
-    const camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.1, 100);
-    camera.position.set(0, 2.25, 9.2);
-    camera.lookAt(0, -0.72, 0.35);
-
-    const renderer = new THREE.WebGLRenderer({
-      canvas,
-      antialias: false,
-      alpha: true,
-    });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.6));
-    renderer.setSize(window.innerWidth, window.innerHeight);
-
-    scene.add(new THREE.AmbientLight(0xffffff, 1.1));
-
-    const keyLight = new THREE.DirectionalLight(0xffffff, 1.2);
-    keyLight.position.set(4, 8, 6);
-    scene.add(keyLight);
-
-    const screenLight = new THREE.PointLight(0x79f26d, 0, 8);
-    screenLight.position.set(0, 1.7, 2.15);
-    scene.add(screenLight);
-
-    const computer = new THREE.Group();
-    scene.add(computer);
-
-    const bodyMaterial = new THREE.MeshStandardMaterial({ color: 0xd8d2bf, roughness: 0.74, metalness: 0.08 });
-    const darkMaterial = new THREE.MeshStandardMaterial({ color: 0x111827, roughness: 0.9 });
-    const screenMaterial = new THREE.MeshStandardMaterial({
-      color: 0x081712,
-      emissive: 0x79f26d,
-      emissiveIntensity: 0,
-      roughness: 0.25,
-    });
-    const keyboardMaterial = new THREE.MeshStandardMaterial({ color: 0x1f2937, roughness: 0.82 });
-    const tableMaterial = new THREE.MeshStandardMaterial({ color: 0xd9b06f, roughness: 0.62 });
-    const tableDarkMaterial = new THREE.MeshStandardMaterial({ color: 0x9b6a35, roughness: 0.72 });
-    const wallMaterial = new THREE.MeshStandardMaterial({ color: 0xf6f3ec, roughness: 0.9 });
-
-    const monitor = new THREE.Mesh(new THREE.BoxGeometry(3.7, 2.55, 1.1), bodyMaterial);
-    monitor.position.y = 1.35;
-    computer.add(monitor);
-
-    const screenFrame = new THREE.Mesh(new THREE.BoxGeometry(3.12, 1.92, 0.1), darkMaterial);
-    screenFrame.position.set(0, 1.42, 0.53);
-    screenFrame.scale.z = 0.5;
-    computer.add(screenFrame);
-
-    const screen = new THREE.Mesh(new THREE.BoxGeometry(2.82, 1.62, 0.08), screenMaterial);
-    screen.position.set(0, 1.42, 0.62);
-    computer.add(screen);
-
-    const stand = new THREE.Mesh(new THREE.BoxGeometry(0.52, 0.72, 0.45), bodyMaterial);
-    stand.position.y = -0.15;
-    computer.add(stand);
-
-    const base = new THREE.Mesh(new THREE.BoxGeometry(2.35, 0.22, 1.35), bodyMaterial);
-    base.position.y = -0.62;
-    computer.add(base);
-
-    const keyboard = new THREE.Mesh(new THREE.BoxGeometry(3.6, 0.2, 1.15), keyboardMaterial);
-    keyboard.position.set(0, -1.08, 1.5);
-    keyboard.rotation.x = -0.18;
-    computer.add(keyboard);
-
-    for (let row = 0; row < 3; row += 1) {
-      for (let col = 0; col < 12; col += 1) {
-        const key = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.04, 0.12), darkMaterial);
-        key.position.set(-1.28 + col * 0.23, -0.93, 1.16 + row * 0.18);
-        key.rotation.x = -0.18;
-        computer.add(key);
-      }
-    }
-
-    const tableTop = new THREE.Mesh(new THREE.BoxGeometry(7.2, 0.32, 3.6), tableMaterial);
-    tableTop.position.set(0, -1.22, 0.6);
-    scene.add(tableTop);
-
-    [
-      [-3.05, -2.35, -0.85],
-      [3.05, -2.35, -0.85],
-      [-3.05, -2.35, 1.95],
-      [3.05, -2.35, 1.95],
-    ].forEach(([x, y, z]) => {
-      const leg = new THREE.Mesh(new THREE.BoxGeometry(0.34, 2.25, 0.34), tableDarkMaterial);
-      leg.position.set(x, y, z);
-      scene.add(leg);
-    });
-
-    const floor = new THREE.Mesh(new THREE.PlaneGeometry(28, 28), wallMaterial);
-    floor.rotation.x = -Math.PI / 2;
-    floor.position.y = -3.48;
-    scene.add(floor);
-
-    const backWall = new THREE.Mesh(new THREE.PlaneGeometry(28, 14), wallMaterial);
-    backWall.position.set(0, 3.2, -5.4);
-    scene.add(backWall);
-
-    computer.position.set(0, 7.2, 0.54);
-    computer.rotation.set(-0.42, 0.34, -0.16);
-
-    let frame = null;
-    let disposed = false;
-    const introStart = performance.now();
-
-    function easeOutBack(x) {
-      const c1 = 1.70158;
-      const c3 = c1 + 1;
-      return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2);
-    }
-
-    function render(now) {
-      if (disposed) {
-        return;
-      }
-
-      const elapsed = (now - introStart) / 1000;
-      const drop = Math.min(elapsed / (reducedMotion ? 0.01 : 2.3), 1);
-      const easedDrop = easeOutBack(drop);
-
-      if (!entering) {
-        computer.position.y = 7.2 + (-0.16 - 7.2) * easedDrop;
-        computer.rotation.x = -0.42 + 0.42 * easedDrop + Math.sin(now * 0.0012) * 0.012;
-        computer.rotation.y = 0.34 - 0.34 * easedDrop + Math.sin(now * 0.0009) * 0.018;
-        computer.rotation.z = -0.16 + 0.16 * easedDrop;
-      }
-
-      if (drop >= 1) {
-        markComputerReady();
-      }
-
-      if (computerReady && !entering) {
-        screenMaterial.emissiveIntensity = 1.05 + Math.sin(now * 0.012) * 0.18;
-        screenLight.intensity = 2.4 + Math.sin(now * 0.008) * 0.45;
-      }
-
-      renderer.render(scene, camera);
-      frame = requestAnimationFrame(render);
-    }
-
-    frame = requestAnimationFrame(render);
-
-    function dispose() {
-      disposed = true;
-
-      if (frame) {
-        cancelAnimationFrame(frame);
-      }
-
-      scene.traverse((object) => {
-        object.geometry?.dispose();
-        const materials = object.material ? (Array.isArray(object.material) ? object.material : [object.material]) : [];
-        materials.forEach((material) => material.dispose());
-      });
-
-      renderer.dispose();
-    }
-
-    function zoomIntoScreen(done) {
-      const start = performance.now();
-      const duration = reducedMotion ? 80 : 850;
-
-      function zoom(now) {
-        const progress = Math.min((now - start) / duration, 1);
-        camera.position.z = 9.2 - progress * 7.6;
-        camera.position.y = 2.25 - progress * 0.75;
-        computer.scale.setScalar(1 + progress * 3.2);
-        screenMaterial.emissiveIntensity = 1.4 + progress * 8;
-        screenLight.intensity = 4 + progress * 20;
-        renderer.render(scene, camera);
-
-        if (progress < 1) {
-          requestAnimationFrame(zoom);
-          return;
-        }
-
-        done();
-      }
-
-      requestAnimationFrame(zoom);
-    }
-
-    function resize() {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      camera.lookAt(0, -0.72, 0.35);
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    }
-
-    return { dispose, resize, zoomIntoScreen };
-  } catch (error) {
-    canvas.hidden = true;
-    console.warn("WebGL intro failed. Falling back to CSS intro.", error);
-    return null;
-  }
+function stars(level) {
+  return "★★★★★"
+    .split("")
+    .map((star, index) => `<span class="${index < level ? "filled" : ""}">${star}</span>`)
+    .join("");
 }
 
-threeIntro = initThreeIntro();
-setTimeout(markComputerReady, reducedMotion ? 80 : 2450);
-
-function finishIntroTransition() {
-  shell.dataset.scene = "warp";
-  threeIntro?.dispose();
-  setTimeout(startLoading, reducedMotion ? 80 : 1050);
+function renderSkills() {
+  const grid = document.querySelector("#skills-grid");
+  skillGroups.forEach((group) => {
+    const card = createElement("article", "skill-card");
+    card.innerHTML = `
+      <h3>${group.title}</h3>
+      <div class="skill-rows">
+        ${group.skills
+          .map(
+            (skill) => `
+              <div class="skill-row">
+                <span>${skill.name}</span>
+                <strong aria-label="${skill.level}점">${stars(skill.level)}</strong>
+              </div>
+            `,
+          )
+          .join("")}
+      </div>
+    `;
+    grid.append(card);
+  });
 }
 
-function enterPixelWorld() {
-  if (!computerReady || entering) {
-    return;
-  }
-
-  entering = true;
-  introScene.classList.add("is-entering");
-  enterButton.classList.remove("is-ready");
-
-  if (threeIntro) {
-    threeIntro.zoomIntoScreen(finishIntroTransition);
-    return;
-  }
-
-  setTimeout(finishIntroTransition, reducedMotion ? 80 : 850);
+function projectCard(project, index) {
+  return `
+    <article class="project-card" data-project-index="${index}" tabindex="0" role="button" aria-label="${project.name} 상세보기">
+      <h3>${project.name}</h3>
+      <p>${project.summary}</p>
+      <div class="project-stack">기술: ${project.stack.join(", ")}</div>
+      <button type="button">상세보기 클릭</button>
+    </article>
+  `;
 }
 
-function startLoading() {
-  shell.dataset.scene = "loading";
-  let progress = 0;
-  const messages = [
-    "프로필 데이터를 불러오는 중...",
-    "기술스택을 장착하는 중...",
-    "프로젝트 퀘스트를 정렬하는 중...",
-    "캐릭터 상태창 생성 중...",
-  ];
+function updateCarousel() {
+  const cards = document.querySelectorAll(".project-card");
+  const dots = document.querySelectorAll(".carousel-dots button");
 
-  const timer = setInterval(() => {
-    progress = Math.min(progress + 10 + Math.random() * 14, 100);
-    loadingBar.style.width = `${progress}%`;
-    loadingText.textContent = messages[Math.min(Math.floor(progress / 28), messages.length - 1)];
+  cards.forEach((card, index) => {
+    const prevIndex = (currentIndex - 1 + projects.length) % projects.length;
+    const nextIndex = (currentIndex + 1) % projects.length;
+    card.classList.toggle("active", index === currentIndex);
+    card.classList.toggle("prev-card", index === prevIndex);
+    card.classList.toggle("next-card", index === nextIndex);
+    card.classList.toggle("hidden-card", index !== currentIndex && index !== prevIndex && index !== nextIndex);
+  });
 
-    if (progress >= 100) {
-      clearInterval(timer);
-      setTimeout(() => {
-        shell.dataset.scene = "portfolio";
-      }, reducedMotion ? 80 : 500);
-    }
-  }, reducedMotion ? 30 : 220);
+  dots.forEach((dot, index) => dot.classList.toggle("active", index === currentIndex));
 }
 
-enterButton.addEventListener("click", enterPixelWorld);
+function moveCarousel(direction) {
+  currentIndex = (currentIndex + direction + projects.length) % projects.length;
+  updateCarousel();
+}
 
-window.addEventListener("keydown", (event) => {
-  if ((event.key === "Enter" || event.key === " ") && shell.dataset.scene === "intro") {
-    enterPixelWorld();
-  }
-});
+function openModal(index) {
+  const project = projects[index];
+  const modal = document.querySelector("#project-modal");
+  const content = document.querySelector("#modal-content");
+  const links = Object.entries(project.links)
+    .map(([label, href]) => `<a href="${href}" target="_blank" rel="noreferrer">${label}</a>`)
+    .join("");
 
-tabs.forEach((tab) => {
-  tab.addEventListener("click", () => {
-    const target = tab.dataset.tab;
+  content.innerHTML = `
+    <h2>${project.name}</h2>
+    <div class="modal-image" aria-label="${project.name} 스크린샷 placeholder">
+      <span></span><span></span><span></span>
+    </div>
+    <section>
+      <h3>📝 개요</h3>
+      <p>${project.description}</p>
+    </section>
+    <section>
+      <h3>🛠 기술 스택</h3>
+      <div class="modal-tags">${project.stack.map((item) => `<span>${item}</span>`).join("")}</div>
+    </section>
+    <section>
+      <h3>💡 배운 점</h3>
+      <ul>${project.learned.map((item) => `<li>${item}</li>`).join("")}</ul>
+    </section>
+    <section>
+      <h3>🔗 링크</h3>
+      <div class="modal-links">${links || "<span>링크 준비 중</span>"}</div>
+    </section>
+  `;
 
-    tabs.forEach((item) => item.classList.toggle("is-active", item === tab));
-    panels.forEach((panel) => {
-      panel.classList.toggle("is-active", panel.dataset.panel === target);
+  modal.classList.add("open");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+}
+
+function closeModal() {
+  const modal = document.querySelector("#project-modal");
+  modal.classList.remove("open");
+  modal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+}
+
+function renderProjects() {
+  const track = document.querySelector("#project-track");
+  const dots = document.querySelector("#project-dots");
+  track.innerHTML = projects.map(projectCard).join("");
+  dots.innerHTML = projects.map((_, index) => `<button type="button" aria-label="${index + 1}번 프로젝트"></button>`).join("");
+
+  document.querySelector(".carousel-button.prev").addEventListener("click", () => moveCarousel(-1));
+  document.querySelector(".carousel-button.next").addEventListener("click", () => moveCarousel(1));
+
+  track.querySelectorAll(".project-card").forEach((card) => {
+    const index = Number(card.dataset.projectIndex);
+    card.addEventListener("click", () => openModal(index));
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openModal(index);
+      }
     });
   });
-});
 
-window.addEventListener("resize", () => {
-  threeIntro?.resize();
-});
+  dots.querySelectorAll("button").forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      currentIndex = index;
+      updateCarousel();
+    });
+  });
+
+  updateCarousel();
+}
+
+function initModal() {
+  document.querySelectorAll("[data-close-modal]").forEach((button) => button.addEventListener("click", closeModal));
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeModal();
+    if (event.key === "ArrowLeft") moveCarousel(-1);
+    if (event.key === "ArrowRight") moveCarousel(1);
+  });
+}
+
+renderSkills();
+renderProjects();
+initModal();
