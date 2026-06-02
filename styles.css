@@ -1,20 +1,20 @@
 :root {
   color-scheme: light;
-  --bg: #edf3fb;
-  --bg-2: #f7fbff;
-  --surface: rgba(255, 255, 255, 0.82);
+  --bg: #eef3f8;
+  --bg-2: #fbfdff;
+  --surface: rgba(255, 255, 255, 0.9);
   --surface-solid: #ffffff;
-  --surface-blue: #eaf4ff;
-  --line: rgba(37, 99, 235, 0.12);
-  --line-strong: rgba(14, 165, 233, 0.36);
-  --text: #101827;
-  --body: #435267;
-  --muted: #75849a;
+  --surface-blue: #edf6ff;
+  --line: rgba(49, 70, 104, 0.11);
+  --line-strong: rgba(37, 99, 235, 0.32);
+  --text: #111827;
+  --body: #42526a;
+  --muted: #718096;
   --accent: #2563eb;
-  --cyan: #0ea5e9;
+  --cyan: #0284c7;
   --mint: #14b8a6;
-  --shadow: 0 22px 60px rgba(37, 99, 235, 0.12);
-  --radius: 26px;
+  --shadow: 0 18px 45px rgba(31, 63, 114, 0.11);
+  --radius: 22px;
   --sans: Inter, Poppins, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif;
 }
 
@@ -31,8 +31,9 @@ body {
   min-width: 320px;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at 18% 12%, rgba(14, 165, 233, 0.18), transparent 28%),
-    radial-gradient(circle at 84% 8%, rgba(20, 184, 166, 0.16), transparent 30%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), transparent 260px),
+    radial-gradient(circle at 18% 12%, rgba(14, 165, 233, 0.12), transparent 26%),
+    radial-gradient(circle at 84% 8%, rgba(20, 184, 166, 0.11), transparent 28%),
     linear-gradient(180deg, var(--bg-2), var(--bg));
   color: var(--text);
   font-family: var(--sans);
@@ -63,11 +64,11 @@ main,
   justify-content: space-between;
   gap: 18px;
   transform: translateX(-50%);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(49, 70, 104, 0.08);
   border-radius: 999px;
   padding: 10px 14px 10px 20px;
-  background: rgba(255, 255, 255, 0.74);
-  box-shadow: 0 12px 34px rgba(37, 99, 235, 0.1);
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 12px 28px rgba(31, 63, 114, 0.08);
   backdrop-filter: blur(22px);
 }
 
@@ -101,10 +102,10 @@ main,
 .hero {
   position: relative;
   display: grid;
-  min-height: 92vh;
+  min-height: 88vh;
   place-items: center;
   overflow: hidden;
-  padding: 128px 20px 86px;
+  padding: 132px 20px 72px;
 }
 
 .hero-bg {
@@ -112,15 +113,21 @@ main,
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(circle, rgba(37, 99, 235, 0.18) 1px, transparent 1px),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(234, 244, 255, 0.16));
-  background-size: 32px 32px, auto;
-  mask-image: radial-gradient(circle at center, black, transparent 78%);
+    radial-gradient(circle, rgba(37, 99, 235, 0.1) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(234, 244, 255, 0.22));
+  background-size: 36px 36px, auto;
+  mask-image: radial-gradient(circle at center, black, transparent 76%);
   animation: drift 18s linear infinite;
 }
 
 .hero-content {
-  max-width: 940px;
+  max-width: 880px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 34px;
+  padding: clamp(34px, 6vw, 64px);
+  background: rgba(255, 255, 255, 0.48);
+  box-shadow: 0 22px 70px rgba(31, 63, 114, 0.1);
+  backdrop-filter: blur(18px);
   text-align: center;
 }
 
@@ -149,14 +156,14 @@ h3 {
 }
 
 h1 {
-  font-size: clamp(4rem, 12vw, 8.6rem);
+  font-size: clamp(3.4rem, 10vw, 7.4rem);
   font-weight: 950;
   line-height: 0.9;
 }
 
 .hero-copy {
-  max-width: 760px;
-  margin: 26px auto 0;
+  max-width: 700px;
+  margin: 22px auto 0;
   color: var(--body);
   font-size: clamp(1.14rem, 2vw, 1.45rem);
   line-height: 1.72;
@@ -184,17 +191,23 @@ h1 {
 }
 
 .section {
-  padding: clamp(72px, 10vw, 112px) 0;
+  margin: 28px 0;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 34px;
+  padding: clamp(34px, 6vw, 58px);
+  background: rgba(255, 255, 255, 0.44);
+  box-shadow: 0 18px 60px rgba(31, 63, 114, 0.07);
+  backdrop-filter: blur(16px);
 }
 
 .section-heading {
   display: grid;
   gap: 8px;
-  margin-bottom: 34px;
+  margin-bottom: 28px;
 }
 
 .section-heading h2 {
-  font-size: clamp(2.5rem, 5vw, 4.8rem);
+  font-size: clamp(2.15rem, 4.4vw, 4rem);
   font-weight: 950;
   line-height: 0.98;
 }
@@ -202,23 +215,23 @@ h1 {
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  gap: 16px;
 }
 
 .skill-card,
 .project-card,
 .education-card {
-  border: 1px solid rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(49, 70, 104, 0.08);
   border-radius: var(--radius);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(248, 251, 255, 0.72)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 251, 255, 0.86)),
     var(--surface);
-  box-shadow: 0 16px 42px rgba(31, 63, 114, 0.09);
+  box-shadow: 0 14px 36px rgba(31, 63, 114, 0.075);
   backdrop-filter: blur(18px);
 }
 
 .skill-card {
-  padding: 28px;
+  padding: 24px;
 }
 
 .skill-card h3 {
@@ -252,20 +265,20 @@ h1 {
 
 .carousel-shell {
   display: grid;
-  grid-template-columns: 54px minmax(0, 1fr) 54px;
-  gap: 18px;
+  grid-template-columns: 48px minmax(0, 1fr) 48px;
+  gap: 14px;
   align-items: center;
 }
 
 .carousel-viewport {
   position: relative;
-  min-height: 430px;
+  min-height: 390px;
   overflow: hidden;
 }
 
 .carousel-track {
   position: relative;
-  height: 430px;
+  height: 390px;
 }
 
 .project-card {
@@ -273,14 +286,14 @@ h1 {
   left: 50%;
   top: 50%;
   display: grid;
-  width: min(650px, 76%);
-  min-height: 340px;
+  width: min(620px, 72%);
+  min-height: 310px;
   align-content: start;
   padding: clamp(24px, 4vw, 40px);
   cursor: pointer;
   opacity: 0;
   pointer-events: none;
-  transform: translate(-50%, -50%) scale(0.84);
+  transform: translate(-50%, -50%) scale(0.82);
   transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1), opacity 280ms ease, filter 280ms ease, border-color 180ms ease;
 }
 
@@ -291,23 +304,23 @@ h1 {
   filter: none;
   transform: translate(-50%, -50%) scale(1);
   border-color: rgba(37, 99, 235, 0.2);
-  box-shadow: var(--shadow);
+  box-shadow: 0 24px 70px rgba(31, 63, 114, 0.16);
 }
 
 .project-card.prev-card,
 .project-card.next-card {
   z-index: 2;
-  opacity: 0.42;
+  opacity: 0.34;
   pointer-events: auto;
-  filter: blur(1px) saturate(0.82);
+  filter: blur(1.8px) saturate(0.82);
 }
 
 .project-card.prev-card {
-  transform: translate(-116%, -50%) scale(0.86) rotate(-3deg);
+  transform: translate(-112%, -50%) scale(0.82) rotate(-2.5deg);
 }
 
 .project-card.next-card {
-  transform: translate(16%, -50%) scale(0.86) rotate(3deg);
+  transform: translate(12%, -50%) scale(0.82) rotate(2.5deg);
 }
 
 .project-card.hidden-card {
@@ -327,7 +340,7 @@ h1 {
 }
 
 .project-card h3 {
-  font-size: clamp(1.8rem, 3vw, 3rem);
+  font-size: clamp(1.7rem, 3vw, 2.75rem);
 }
 
 .project-card p {
@@ -356,12 +369,12 @@ h1 {
 
 .carousel-button {
   display: grid;
-  width: 54px;
-  height: 54px;
+  width: 48px;
+  height: 48px;
   place-items: center;
   border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.9);
   color: var(--accent);
   font-size: 2.1rem;
   box-shadow: 0 12px 28px rgba(31, 63, 114, 0.1);
@@ -400,8 +413,8 @@ h1 {
 .education-card {
   display: grid;
   grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-  gap: 30px;
-  padding: clamp(24px, 4vw, 38px);
+  gap: 28px;
+  padding: clamp(24px, 4vw, 34px);
 }
 
 .education-period {
@@ -461,7 +474,7 @@ h1 {
 .modal-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(15, 23, 42, 0.48);
+  background: rgba(15, 23, 42, 0.42);
   backdrop-filter: blur(10px);
 }
 
@@ -471,10 +484,10 @@ h1 {
   width: min(920px, 100%);
   max-height: min(86vh, 900px);
   overflow: auto;
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  border-radius: 28px;
+  border: 1px solid rgba(49, 70, 104, 0.1);
+  border-radius: 26px;
   padding: clamp(22px, 4vw, 38px);
-  background: #f8fbff;
+  background: #fbfdff;
   box-shadow: var(--shadow);
 }
 
@@ -501,7 +514,7 @@ h1 {
 
 .modal-image {
   position: relative;
-  min-height: 280px;
+  min-height: 250px;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 20px;
@@ -582,8 +595,8 @@ h1 {
 
   .carousel-viewport,
   .carousel-track {
-    min-height: 390px;
-    height: 390px;
+    min-height: 360px;
+    height: 360px;
   }
 }
 
@@ -623,7 +636,17 @@ h1 {
   }
 
   h1 {
-    font-size: clamp(3.3rem, 18vw, 5.4rem);
+    font-size: clamp(3rem, 17vw, 4.8rem);
+  }
+
+  .hero-content,
+  .section {
+    border-radius: 24px;
+    padding-inline: 18px;
+  }
+
+  .section {
+    margin: 18px 0;
   }
 }
 
