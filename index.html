@@ -3,131 +3,97 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="금동호의 프론트엔드 및 AI 서비스 개발 포트폴리오입니다. React, TypeScript, Python, RAG, AI Agent 프로젝트를 소개합니다."
-    />
-    <meta property="og:title" content="금동호 | Frontend Developer + AI Engineer" />
-    <meta
-      property="og:description"
-      content="사용자 경험을 중심으로 프론트엔드와 생성형 AI 서비스를 구현하는 개발자 포트폴리오입니다."
-    />
+    <meta name="description" content="Next.js와 Python 백엔드를 기반으로 AI 기능을 실제 웹·앱 서비스로 구현하는 개발자 금동호의 포트폴리오입니다." />
+    <meta property="og:title" content="금동호 | AI 서비스·풀스택 개발자" />
+    <meta property="og:description" content="AI 기능을 실제 서비스로 연결하는 풀스택 개발자 금동호의 포트폴리오입니다." />
     <meta property="og:type" content="website" />
-    <title>금동호 | Frontend Developer + AI Engineer</title>
-    <link rel="stylesheet" href="./styles.css" />
-    <script src="./script.js" defer></script>
+    <title>금동호 | AI 서비스·풀스택 개발자</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/data.js" defer></script>
+    <script src="/script.js" defer></script>
   </head>
   <body>
     <header class="site-header">
-      <a class="logo" href="#top">DONGHO.K</a>
-      <nav class="nav-links" aria-label="주요 메뉴">
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#education">Education</a>
-        <a href="https://github.com/gold3534-tech" target="_blank" rel="noreferrer">GitHub</a>
+      <div class="header-inner">
+        <a class="brand" href="/"><span class="brand-mark">KD</span><span>금동호</span></a>
+        <nav class="desktop-nav" aria-label="주요 메뉴">
+          <a data-nav-link href="/">홈</a>
+          <a data-nav-link href="/projects/">프로젝트</a>
+          <a data-nav-link href="/skills/">기술 스택</a>
+          <a data-nav-link href="/about/">소개</a>
+          <a data-nav-link href="/github/">GitHub</a>
+        </nav>
+        <div class="header-actions">
+          <a class="icon-button" href="https://github.com/gold3534-tech" target="_blank" rel="noreferrer" aria-label="GitHub 열기">GH</a>
+        </div>
+        <button class="menu-button" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="모바일 메뉴 열기">☰</button>
+      </div>
+      <nav id="mobile-menu" class="mobile-menu" data-mobile-menu hidden aria-label="모바일 메뉴">
+        <a data-nav-link href="/">홈</a>
+        <a data-nav-link href="/projects/">프로젝트</a>
+        <a data-nav-link href="/skills/">기술 스택</a>
+        <a data-nav-link href="/about/">소개</a>
+        <a data-nav-link href="/github/">GitHub</a>
       </nav>
     </header>
 
-    <main id="top">
+    <main>
       <section class="hero">
-        <div class="hero-content">
-          <p class="eyebrow">Frontend Developer + AI Engineer</p>
-          <h1>금동호</h1>
-          <p class="hero-copy">
-            React와 TypeScript로 화면의 흐름을 만들고, 생성형 AI 기능을 서비스 안에 자연스럽게 연결합니다.
-            보기 좋은 UI보다 한 단계 더 나아가 상태 변화, 필터링, 폼 UX, 반응형 컴포넌트를 실제로 구현하는
-            프론트엔드 개발자를 목표로 합니다.
+        <div class="hero-title-block">
+          <p class="eyebrow">AI 서비스 · 풀스택 개발자</p>
+          <h1>AI 기능을 실제 <span>서비스</span>로 연결하는 풀스택 개발자</h1>
+        </div>
+        <div class="hero-copy-block">
+          <p class="lead">
+            Next.js와 Python 백엔드를 기반으로 사용자 화면부터 API, 인증, 데이터 연동, 배포까지 구현합니다.
+            생성형 AI와 RAG 기술을 실제 사용 가능한 서비스로 연결하는 과정에 관심이 있습니다.
           </p>
           <div class="hero-actions">
-            <a class="primary-button" href="#projects">프로젝트 보기</a>
-            <a class="secondary-button" href="#frontend-lab">프론트 기능 보기</a>
-            <a class="secondary-button" href="https://github.com/gold3534-tech" target="_blank" rel="noreferrer">
-              GitHub
-            </a>
+            <a class="button" href="/projects/">프로젝트 보기</a>
+            <a class="button button-ghost" href="/skills/">기술 스택</a>
+            <a class="icon-button" href="https://github.com/gold3534-tech" target="_blank" rel="noreferrer" aria-label="GitHub 열기">GH</a>
           </div>
-        </div>
-        <aside class="hero-panel" aria-label="핵심 역량 요약">
-          <div>
-            <strong>UI 구현</strong>
-            <span>컴포넌트 설계, 상태 관리, 반응형 레이아웃</span>
-          </div>
-          <div>
-            <strong>서비스 흐름</strong>
-            <span>검색, 필터, 상세 모달, 폼 피드백</span>
-          </div>
-          <div>
-            <strong>AI 연동</strong>
-            <span>RAG, Agent, API 응답을 사용자 화면으로 정리</span>
-          </div>
-        </aside>
-      </section>
-
-      <section class="section projects-section" id="projects">
-        <div class="section-heading section-heading-row">
-          <div>
-            <p>PROJECTS</p>
-            <h2>구현한 프로젝트</h2>
-          </div>
-          <span class="section-note">GitHub README의 실제 화면 이미지를 사용했습니다.</span>
-        </div>
-        <div class="project-filters" id="project-filters" aria-label="프로젝트 필터"></div>
-        <div class="projects-grid" id="project-grid"></div>
-      </section>
-
-      <section class="section lab-section" id="frontend-lab">
-        <div class="section-heading section-heading-row">
-          <div>
-            <p>FRONTEND LAB</p>
-            <h2>프론트엔드 구현 역량</h2>
-          </div>
-          <span class="section-note">탭과 컨트롤을 눌러 직접 상태 변화를 확인할 수 있습니다.</span>
-        </div>
-        <div class="lab-shell">
-          <div class="lab-tabs" id="lab-tabs" role="tablist" aria-label="프론트엔드 구현 예시"></div>
-          <article class="lab-preview" id="lab-preview"></article>
-          <aside class="lab-notes" id="lab-notes"></aside>
         </div>
       </section>
 
-      <section class="section" id="skills">
-        <div class="section-heading">
-          <p>SKILLS</p>
-          <h2>기술 스택</h2>
+      <section class="section">
+        <div class="section-header">
+          <p class="eyebrow">Featured Projects</p>
+          <h2>주요 프로젝트</h2>
+          <p>실제 저장소와 README를 기준으로 대표 프로젝트를 정리했습니다.</p>
         </div>
-        <div class="skills-grid" id="skills-grid"></div>
+        <div class="project-grid" data-featured-projects></div>
       </section>
 
-      <section class="section education-section" id="education">
-        <div class="section-heading">
-          <p>EDUCATION</p>
-          <h2>교육 이력</h2>
+      <section class="section">
+        <div class="section-header">
+          <p class="eyebrow">Workflow</p>
+          <h2>작업 방식</h2>
         </div>
-        <article class="education-card">
-          <div class="education-main">
-            <p class="education-period">2025.12 - 2026.05 수료</p>
-            <h3>데이터 분석 및 생성형 AI 기반 자동화 시스템 개발 과정</h3>
-            <strong>청년취업사관학교 새싹 SeSAC</strong>
-          </div>
-          <div class="education-detail">
-            <p>
-              Python 데이터 분석, 머신러닝, 생성형 AI, RAG, AI Agent, FastAPI 기반 API 서버 구현까지 이어지는
-              실무 중심 과정을 수료했습니다.
-            </p>
-            <div class="education-tags">
-              <span>Python</span><span>MySQL</span><span>Streamlit</span><span>Docker</span>
-              <span>LangChain</span><span>ChromaDB</span><span>FastAPI</span><span>GitHub</span>
-            </div>
-          </div>
-        </article>
+        <div class="work-grid">
+          <article class="work-card"><h3>서비스 관점</h3><p>기능 구현에 앞서 사용자 흐름과 필요한 데이터를 정리합니다.</p></article>
+          <article class="work-card"><h3>문제 해결</h3><p>프론트엔드, API, 데이터베이스 흐름을 나누어 원인을 확인합니다.</p></article>
+          <article class="work-card"><h3>빠른 프로토타입</h3><p>아이디어를 작은 기능으로 나누어 빠르게 구현하고 검증합니다.</p></article>
+          <article class="work-card"><h3>운영 개선</h3><p>배포 이후 발생하는 인증, 권한, 데이터 연동 문제를 지속적으로 개선합니다.</p></article>
+        </div>
+      </section>
+
+      <section class="section contact-band">
+        <div>
+          <p class="eyebrow">Skills Preview</p>
+          <h2>서비스 구현에 필요한 기술을 연결합니다.</h2>
+          <div class="tag-list skill-preview" data-skill-preview></div>
+        </div>
+        <a class="button" href="/about/">소개 보기</a>
       </section>
     </main>
 
-    <div class="modal" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true">
-      <div class="modal-backdrop" data-close-modal></div>
-      <article class="modal-panel" role="document">
-        <button class="modal-close" type="button" data-close-modal>닫기</button>
-        <div id="modal-content"></div>
-      </article>
-    </div>
+    <footer class="footer">
+      <div class="footer-inner">
+        <span>© 2026 금동호</span>
+        <a class="text-link" href="https://github.com/gold3534-tech" target="_blank" rel="noreferrer">github.com/gold3534-tech</a>
+      </div>
+    </footer>
   </body>
 </html>
