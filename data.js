@@ -233,7 +233,17 @@ const PROJECTS = [
     role: "RAG 문서 구성, 검색 흐름, 추천 이유 생성",
     techStack: ["Python", "OpenAI API", "LangChain", "ChromaDB", "BM25", "Vector Search", "Streamlit"],
     thumbnail: "/public/projects/card-rag/cover.png",
-    screenshots: ["/public/projects/card-rag/cover.png"],
+    screenshots: [
+      "/public/projects/card-rag/cover.png",
+      {
+        src: "/public/projects/card-rag/retrieval-flow.png",
+        alt: "AI 카드 추천 RAG 검색 흐름 화면",
+      },
+      {
+        src: "/public/projects/card-rag/recommendation-result.png",
+        alt: "AI 카드 추천 RAG 추천 결과 구성 화면",
+      },
+    ],
     githubUrl: "https://github.com/gold3534-tech/ai-card-recommendation-rag",
     overview: "사용자의 소비 패턴과 질문을 분석해 관련 카드 후보를 검색하고, 추천 이유를 함께 생성하는 RAG 서비스입니다.",
     background: "카드 상품은 혜택 조건이 복잡해 사용자가 자신에게 맞는 카드를 직접 비교하기 어렵습니다. 검색과 생성형 AI를 결합해 납득 가능한 추천 흐름을 만들었습니다.",
@@ -258,7 +268,17 @@ const PROJECTS = [
     role: "FastAPI 백엔드, 면접 흐름, Slack 알림 연동",
     techStack: ["Python", "FastAPI", "LangChain", "Anthropic Claude", "Slack API", "JavaScript"],
     thumbnail: "/public/projects/resume-interview-agent/cover.png",
-    screenshots: ["/public/projects/resume-interview-agent/cover.png"],
+    screenshots: [
+      "/public/projects/resume-interview-agent/cover.png",
+      {
+        src: "/public/projects/resume-interview-agent/upload-analysis.png",
+        alt: "AI Interview Agent 이력서 업로드와 분석 흐름 화면",
+      },
+      {
+        src: "/public/projects/resume-interview-agent/interview-evaluation.png",
+        alt: "AI Interview Agent 면접 질문과 평가 흐름 화면",
+      },
+    ],
     githubUrl: "https://github.com/gold3534-tech/resume-interview-agent",
     overview: "지원자의 이력서 PDF를 업로드하면 텍스트를 추출하고, 핵심 기술 키워드에 맞춘 면접 질문과 후속 질문, 최종 평가를 생성합니다.",
     background: "기술 면접은 지원자의 실제 경험과 기술 키워드에 맞춰 질문이 달라져야 합니다. 이력서 분석부터 질문 생성, 평가 알림까지 하나의 흐름으로 묶었습니다.",
@@ -354,9 +374,9 @@ const PROJECT_PROOFS = {
     period: "2026.05 · 개인 프로젝트",
     ownership: "기획, UI, 인증, DB, 게시글·댓글, 굿즈 검색, 관리자 기능, 배포",
     deployment: "Vercel · Supabase",
-    impact: "팬덤 활동, 굿즈 탐색, 중고 거래를 하나의 권한 흐름으로 통합",
+    impact: "흩어진 팬덤 활동, 굿즈 탐색, 중고 거래를 하나의 인증·권한 기반 서비스 흐름으로 통합했습니다.",
     proof: ["Supabase SSR 인증", "RLS 권한 설계", "외부 굿즈 캐시 구조", "관리자 신고 처리"],
-    cardNote: "인증·권한·DB·외부 상품 연동까지 직접 구현한 대표 풀스택 프로젝트",
+    cardNote: "인증·권한·DB·외부 상품 연동까지 직접 구현해 서비스 흐름을 완성한 대표 프로젝트",
     troubleshooting: [
       {
         problem: "외부 굿즈 상세 정보를 쿼리 파라미터로 모두 넘기면서 URL이 길어지고 새로고침·공유 시 데이터 안정성이 떨어졌습니다.",
@@ -377,67 +397,80 @@ const PROJECT_PROOFS = {
     period: "2026.06 · 팀 프로젝트 · 원스토어 출시",
     ownership: "Flutter 화면, 소셜 로그인, 추천 API 연동, 여행 준비·지도·프로필 흐름",
     deployment: "One Store",
-    impact: "지역·테마·예산 조건에 맞춘 여행지 추천 모바일 앱 출시",
+    impact: "지역·테마·예산 조건 기반 추천을 Flutter 앱으로 구현하고 원스토어 출시까지 연결했습니다.",
     proof: ["Google 로그인", "Kakao 로그인", "FastAPI 추천 연동", "Kakao Map 표시", "원스토어 등록"],
-    cardNote: "스토어 출시 경험이 있는 Flutter·FastAPI 기반 모바일 서비스",
+    cardNote: "Flutter·FastAPI 기반 여행 추천 앱을 원스토어 출시까지 완성",
   },
   jobnawa: {
     priority: "data",
     period: "2026.04 · 팀 프로젝트",
     ownership: "채용 데이터 수집·정제, Streamlit 분석 화면, 기술 스택 시각화",
     deployment: "GitHub 공개 저장소",
-    impact: "분산된 IT 채용 공고를 검색·분석 가능한 대시보드로 정리",
+    impact: "여러 채용 플랫폼의 공고 데이터를 수집·정제해 검색과 시장 분석이 가능한 대시보드로 만들었습니다.",
     proof: ["Selenium 크롤링", "공고 데이터 정제", "기술 스택 WordCloud", "지역 분포 지도"],
-    cardNote: "채용 공고 수집과 분석 화면을 연결한 데이터 기반 프로젝트",
+    cardNote: "채용 공고 수집·정제 데이터를 분석 가능한 Streamlit 대시보드로 전환",
   },
   "ax-orchestration": {
     priority: "ai-ui",
     period: "2026.06 · 개인 프로젝트",
     ownership: "React Flow 기반 워크플로 UI, 실행 상태 시각화, Agent·Task 모델링",
     deployment: "GitHub 공개 저장소",
-    impact: "AI Agent 실행 흐름을 노드와 상태 중심 UI로 확인",
+    impact: "복잡한 AI Agent 실행 과정을 노드, 상태, 실행 결과 중심의 인터페이스로 시각화했습니다.",
     proof: ["React Flow", "실행 상태 UI", "Agent 모델", "Task 모델", "WebSocket 구조"],
-    cardNote: "복잡한 AI 실행 과정을 시각적으로 다루는 프론트엔드 실험",
+    cardNote: "AI Agent 실행 과정을 React Flow 기반 상태 UI로 시각화",
   },
   "card-rag": {
     priority: "ai",
     period: "2026.03 · 개인 프로젝트",
     ownership: "문서화, BM25·Vector 검색, 추천 이유 생성 흐름",
     deployment: "GitHub 공개 저장소",
-    impact: "카드 혜택 데이터를 검색 기반 추천 흐름으로 변환",
+    impact: "카드 혜택 데이터를 하이브리드 검색과 LLM 설명으로 연결해 납득 가능한 추천 흐름을 만들었습니다.",
     proof: ["RAG", "ChromaDB", "BM25", "추천 이유 생성"],
-    cardNote: "검색과 생성형 AI를 함께 사용한 추천 시스템",
+    cardNote: "Vector Search·BM25·LLM을 결합해 추천 근거를 설명하는 RAG 시스템",
   },
   "resume-interview-agent": {
     priority: "backend-ai",
     period: "2026.03 · 개인 프로젝트",
     ownership: "PDF 분석 API, 면접 질문 생성, 평가 결과와 Slack 알림 연동",
     deployment: "GitHub 공개 저장소",
-    impact: "이력서 기반 기술 면접 질문과 평가 흐름 자동화",
+    impact: "이력서 PDF 분석부터 기술 질문, 후속 질문, 평가 알림까지 면접 흐름을 자동화했습니다.",
     proof: ["FastAPI", "PDF parsing", "LangChain", "Slack API"],
-    cardNote: "문서 분석과 LLM 응답을 백엔드 API로 연결",
+    cardNote: "PDF 분석과 LLM 질문 생성을 FastAPI 면접 흐름으로 연결",
   },
   "traffic-accident": {
     priority: "data",
     period: "2025.12 · 팀 프로젝트",
     ownership: "공공데이터 전처리, LightGBM 학습, Flask 예측 화면",
     deployment: "로컬 데모",
-    impact: "기상·교통·사고 데이터를 자치구별 위험 예측 지도로 시각화",
+    impact: "기상·교통·사고 데이터를 결합해 서울시 자치구별 위험도를 예측 지도에서 비교할 수 있게 했습니다.",
     proof: ["LightGBM", "SMOTE", "공공데이터", "Choropleth Map"],
-    cardNote: "모델 학습 결과를 지도 UI로 연결한 데이터 프로젝트",
+    cardNote: "LightGBM 예측 결과를 서울시 위험도 지도 UI로 연결",
   },
   "portfolio-website": {
     priority: "support",
     period: "2026.06 · 개인 프로젝트",
     ownership: "정적 사이트 구조, 반응형 UI, GitHub Pages 배포",
     deployment: "GitHub Pages",
-    impact: "프로젝트 기록을 지원자 관점으로 정리한 포트폴리오 사이트",
+    impact: "프로젝트 기록을 지원자 관점의 정적 사이트로 정리하고 GitHub Pages에 배포했습니다.",
     proof: ["HTML", "CSS", "JavaScript", "GitHub Pages"],
-    cardNote: "프로젝트를 설명하기 위한 정적 포트폴리오 구현",
+    cardNote: "프로젝트 근거와 상세 HTML을 정적으로 생성하는 포트폴리오 사이트",
   },
 };
 
 PROJECTS.forEach((project) => Object.assign(project, PROJECT_PROOFS[project.slug] || {}));
+
+const PROJECT_ORDER = [
+  "semoduck",
+  "nadeurism",
+  "jobnawa",
+  "ax-orchestration",
+  "card-rag",
+  "resume-interview-agent",
+  "traffic-accident",
+  "portfolio-website",
+];
+
+PROJECTS.sort((a, b) => PROJECT_ORDER.indexOf(a.slug) - PROJECT_ORDER.indexOf(b.slug));
 
 const SKILL_GROUPS = [
   {
