@@ -1,9 +1,12 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="세모덕 프로젝트 상세 페이지입니다." />
+    <meta name="description" content="팬덤별 커뮤니티 활동과 굿즈 탐색, 유저 거래 기능을 제공하는 웹 플랫폼" />
+    <meta property="og:title" content="세모덕 | 금동호" />
+    <meta property="og:description" content="인증·권한·DB·외부 상품 연동까지 직접 구현한 대표 풀스택 프로젝트" />
+    <meta property="og:type" content="article" />
     <title>세모덕 | 금동호</title>
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="../../styles.css" />
@@ -12,7 +15,49 @@
   </head>
   <body>
     <header class="site-header"><div class="header-inner"><a class="brand" href="../../"><span class="brand-mark">KD</span><span>금동호</span></a><nav class="desktop-nav" aria-label="주요 메뉴"><a data-nav-link href="../../">홈</a><a data-nav-link href="../../projects/">프로젝트</a><a data-nav-link href="../../skills/">기술 스택</a><a data-nav-link href="../../about/">소개</a><a data-nav-link href="../../github/">GitHub</a></nav><div class="header-actions"><a class="icon-button" href="https://github.com/gold3534-tech" target="_blank" rel="noreferrer" aria-label="GitHub 열기">GH</a></div><button class="menu-button" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="모바일 메뉴 열기">☰</button></div><nav id="mobile-menu" class="mobile-menu" data-mobile-menu hidden aria-label="모바일 메뉴"><a data-nav-link href="../../">홈</a><a data-nav-link href="../../projects/">프로젝트</a><a data-nav-link href="../../skills/">기술 스택</a><a data-nav-link href="../../about/">소개</a><a data-nav-link href="../../github/">GitHub</a></nav></header>
-    <main data-project-detail="semoduck"></main>
+    <main data-project-detail="semoduck">
+      <section class="detail-hero">
+        <div>
+          <p class="eyebrow">Project</p>
+          <h1>세모덕</h1>
+          <p class="lead">팬덤별 커뮤니티 활동과 굿즈 탐색, 유저 거래 기능을 제공하는 웹 플랫폼</p>
+          <dl class="detail-meta">
+            <div><dt>기간·형태</dt><dd>2026.05 · 개인 프로젝트</dd></div><div><dt>직접 담당</dt><dd>기획, UI, 인증, DB, 게시글·댓글, 굿즈 검색, 관리자 기능, 배포</dd></div><div><dt>배포·공개</dt><dd>Vercel · Supabase</dd></div><div><dt>핵심 성과</dt><dd>팬덤 활동, 굿즈 탐색, 중고 거래를 하나의 권한 흐름으로 통합</dd></div><div><dt>역할 요약</dt><dd>프론트엔드와 서비스 흐름 구현</dd></div><div><dt>분류</dt><dd>풀스택</dd></div>
+          </dl>
+          <div class="proof-list proof-list-hero"><span>Supabase SSR 인증</span><span>RLS 권한 설계</span><span>외부 굿즈 캐시 구조</span><span>관리자 신고 처리</span></div>
+          <div class="tag-list"><span>Next.js App Router</span><span>TypeScript</span><span>Supabase</span><span>PostgreSQL</span><span>Tailwind CSS</span><span>Vercel</span></div>
+          <div class="hero-actions">
+            <a class="button" href="https://github.com/gold3534-tech/semoduck" target="_blank" rel="noreferrer">GitHub 보기</a>
+            
+          </div>
+        </div>
+        <div class="detail-cover"><img src="../../public/projects/semoduck/cover.png" alt="세모덕 대표 화면" loading="lazy" /></div>
+      </section>
+      <section class="section two-column">
+        <article><p class="eyebrow">Overview</p><h2>프로젝트 소개</h2><p>관심사별 갤러리, 게시글, 굿즈 검색, 내부 거래 게시판을 하나의 사용자 흐름으로 묶은 프로젝트입니다.</p></article>
+        <article><p class="eyebrow">Problem</p><h2>기획 배경</h2><p>팬덤 활동은 이야기, 상품 정보, 거래가 따로 흩어져 있어 사용자가 여러 화면을 오가야 합니다. 세모덕은 이 흐름을 한 서비스 안에서 이어지도록 설계했습니다.</p></article>
+      </section>
+      <section class="section split-panel">
+        <div><p class="eyebrow">Flow</p><h2>시스템 또는 데이터 흐름</h2><p>사용자 인증 → 갤러리 탐색 → 게시글과 댓글 → 굿즈 검색 → 찜 또는 유저 거래 게시글 확인</p></div>
+        <div class="feature-list"><span>인증과 사용자 세션</span><span>게시글과 댓글</span><span>좋아요와 북마크</span><span>이미지 업로드</span><span>작성자·관리자 권한</span><span>굿즈 탐색과 찜</span><span>유저 거래</span><span>신고와 관리자 기능</span></div>
+      </section>
+      <section class="section">
+        <p class="eyebrow">Troubleshooting</p>
+        <h2>문제 해결 경험</h2>
+        <div class="trouble-grid">
+          <article class="trouble-card"><h3>문제</h3><p>외부 굿즈 상세 정보를 쿼리 파라미터로 모두 넘기면서 URL이 길어지고 새로고침·공유 시 데이터 안정성이 떨어졌습니다.</p><h3>원인</h3><p>외부 API 상품 데이터를 내부 DB에 저장하지 않고 화면 상태로만 전달했기 때문에 상세 페이지가 URL과 클라이언트 상태에 과하게 의존했습니다.</p><h3>해결 과정</h3><p>외부 상품 ID를 기준으로 external_goods 테이블에 upsert하고 /goods/external/[id] 경로에서 다시 조회하도록 바꾸어 상세 페이지를 안정적인 리소스로 분리했습니다.</p><h3>배운 점</h3><p>외부 API 데이터도 서비스 안에서 반복 조회되고 공유되는 순간 내부 식별자와 캐시 전략이 필요하다는 점을 확인했습니다.</p></article><article class="trouble-card"><h3>문제</h3><p>작성자, 관리자, 일반 사용자의 수정·삭제·신고 권한이 화면별로 다르게 동작했습니다.</p><h3>원인</h3><p>UI 조건과 Supabase RLS 정책이 같은 기준으로 정리되지 않아 클라이언트에서는 보이지만 서버에서 거절되는 흐름이 생겼습니다.</p><h3>해결 과정</h3><p>사용자 ID, 작성자 ID, 관리자 여부를 기능별 체크 기준으로 정리하고 UI 표시 조건과 RLS 정책을 같은 권한 모델에 맞췄습니다.</p><h3>배운 점</h3><p>권한은 버튼을 숨기는 문제가 아니라 데이터 요청 단계까지 일관되게 막아야 하는 서비스 설계 문제였습니다.</p></article>
+        </div>
+      </section>
+      <section class="section">
+        <p class="eyebrow">Screens</p>
+        <h2>프로젝트 화면</h2>
+        <div class="gallery-grid"><img src="../../public/projects/semoduck/home.png" alt="세모덕 홈 대시보드 화면" loading="lazy" /><img src="../../public/projects/semoduck/gallery.png" alt="세모덕 팬덤 갤러리 목록 화면" loading="lazy" /><img src="../../public/projects/semoduck/gallery-detail.png" alt="세모덕 갤러리 상세와 AI 인기 키워드 화면" loading="lazy" /><img src="../../public/projects/semoduck/search.png" alt="세모덕 굿즈 검색 화면" loading="lazy" /><img src="../../public/projects/semoduck/product-detail.png" alt="세모덕 굿즈 상세와 외부 구매 링크 화면" loading="lazy" /><img src="../../public/projects/semoduck/market.png" alt="세모덕 유저거래 게시판 화면" loading="lazy" /><img src="../../public/projects/semoduck/market-detail.png" alt="세모덕 유저거래 상세 화면" loading="lazy" /><img src="../../public/projects/semoduck/mobile-mockup.png" alt="세모덕 모바일 앱 확장 목업 화면" loading="lazy" /></div>
+      </section>
+      <section class="section contact-band">
+        <div><p class="eyebrow">Learning</p><h2>배운 점</h2><p>커뮤니티, 상품, 거래처럼 성격이 다른 기능도 사용자 목표를 기준으로 묶으면 더 자연스러운 서비스 흐름을 만들 수 있었습니다.</p></div>
+        <a class="button" href="../../projects/">목록으로 돌아가기</a>
+      </section>
+    </main>
     <footer class="footer"><div class="footer-inner"><span>© 2026 금동호</span><a class="text-link" href="../../projects/">프로젝트 목록</a></div></footer>
   </body>
 </html>

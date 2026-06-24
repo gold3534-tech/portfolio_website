@@ -1,9 +1,63 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ko">
-  <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="description" content="AX Orchestration Platform 프로젝트 상세 페이지입니다." /><title>AX Orchestration Platform | 금동호</title><link rel="icon" href="../../favicon.svg" type="image/svg+xml" /><link rel="stylesheet" href="../../styles.css" /><script src="../../data.js" defer></script><script src="../../script.js" defer></script></head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="AI Agent, Task, Tool의 실행 흐름을 시각적으로 구성하고 확인하는 오케스트레이션 인터페이스" />
+    <meta property="og:title" content="AX Orchestration Platform | 금동호" />
+    <meta property="og:description" content="복잡한 AI 실행 과정을 시각적으로 다루는 프론트엔드 실험" />
+    <meta property="og:type" content="article" />
+    <title>AX Orchestration Platform | 금동호</title>
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../styles.css" />
+    <script src="../../data.js" defer></script>
+    <script src="../../script.js" defer></script>
+  </head>
   <body>
     <header class="site-header"><div class="header-inner"><a class="brand" href="../../"><span class="brand-mark">KD</span><span>금동호</span></a><nav class="desktop-nav" aria-label="주요 메뉴"><a data-nav-link href="../../">홈</a><a data-nav-link href="../../projects/">프로젝트</a><a data-nav-link href="../../skills/">기술 스택</a><a data-nav-link href="../../about/">소개</a><a data-nav-link href="../../github/">GitHub</a></nav><div class="header-actions"><a class="icon-button" href="https://github.com/gold3534-tech" target="_blank" rel="noreferrer" aria-label="GitHub 열기">GH</a></div><button class="menu-button" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="모바일 메뉴 열기">☰</button></div><nav id="mobile-menu" class="mobile-menu" data-mobile-menu hidden aria-label="모바일 메뉴"><a data-nav-link href="../../">홈</a><a data-nav-link href="../../projects/">프로젝트</a><a data-nav-link href="../../skills/">기술 스택</a><a data-nav-link href="../../about/">소개</a><a data-nav-link href="../../github/">GitHub</a></nav></header>
-    <main data-project-detail="ax-orchestration"></main>
+    <main data-project-detail="ax-orchestration">
+      <section class="detail-hero">
+        <div>
+          <p class="eyebrow">Project</p>
+          <h1>AX Orchestration Platform</h1>
+          <p class="lead">AI Agent, Task, Tool의 실행 흐름을 시각적으로 구성하고 확인하는 오케스트레이션 인터페이스</p>
+          <dl class="detail-meta">
+            <div><dt>기간·형태</dt><dd>2026.06 · 개인 프로젝트</dd></div><div><dt>직접 담당</dt><dd>React Flow 기반 워크플로 UI, 실행 상태 시각화, Agent·Task 모델링</dd></div><div><dt>배포·공개</dt><dd>GitHub 공개 저장소</dd></div><div><dt>핵심 성과</dt><dd>AI Agent 실행 흐름을 노드와 상태 중심 UI로 확인</dd></div><div><dt>역할 요약</dt><dd>워크플로 UI와 실행 상태 시각화</dd></div><div><dt>분류</dt><dd>프론트엔드, AI</dd></div>
+          </dl>
+          <div class="proof-list proof-list-hero"><span>React Flow</span><span>실행 상태 UI</span><span>Agent 모델</span><span>Task 모델</span><span>WebSocket 구조</span></div>
+          <div class="tag-list"><span>React</span><span>TypeScript</span><span>React Flow</span><span>WebSocket</span><span>REST API</span></div>
+          <div class="hero-actions">
+            <a class="button" href="https://github.com/gold3534-tech/AX_Orchestration_platform" target="_blank" rel="noreferrer">GitHub 보기</a>
+            
+          </div>
+        </div>
+        <div class="detail-cover"><img src="../../public/projects/ax-orchestration/cover.png" alt="AX Orchestration Platform 대표 화면" loading="lazy" /></div>
+      </section>
+      <section class="section two-column">
+        <article><p class="eyebrow">Overview</p><h2>프로젝트 소개</h2><p>사용자는 Agent와 Task를 만들고, 실행 단위를 그래프로 연결한 뒤, 실행 과정과 결과를 시각적으로 확인할 수 있습니다.</p></article>
+        <article><p class="eyebrow">Problem</p><h2>기획 배경</h2><p>AI Agent 실행은 내부 단계가 많아 사용자가 현재 어떤 작업이 진행 중인지 이해하기 어렵습니다. 이를 노드와 실행 상태 중심의 화면으로 풀었습니다.</p></article>
+      </section>
+      <section class="section split-panel">
+        <div><p class="eyebrow">Flow</p><h2>시스템 또는 데이터 흐름</h2><p>Agent·Task 생성 → Crew 그래프 구성 → Flow 그래프 구성 → 실행 → 이벤트와 결과 확인</p></div>
+        <div class="feature-list"><span>Agent·Task·Tool 노드 UI</span><span>드래그 기반 워크플로 구성</span><span>실행 상태 시각화</span><span>실시간 실행 결과 반영</span><span>복잡한 AI 실행 흐름을 이해 가능한 UI로 표현</span></div>
+      </section>
+      <section class="section">
+        <p class="eyebrow">Troubleshooting</p>
+        <h2>문제 해결 경험</h2>
+        <div class="trouble-grid">
+          <article class="trouble-card"><h3>문제</h3><p>그래프 편집 상태와 실행 상태가 한 화면에서 섞여 사용자가 현재 맥락을 파악하기 어려웠습니다.</p><h3>원인</h3><p>생성, 검증, 실행, 결과 확인 단계를 같은 시각 언어로 표현하고 있었습니다.</p><h3>해결 과정</h3><p>노드 편집 영역과 실행 상태 피드백을 분리하고 단계별 상태를 카드와 연결선으로 구분했습니다.</p><h3>배운 점</h3><p>AI 워크플로 UI는 멋진 그래프보다 사용자가 다음 행동을 이해하는 구조가 더 중요했습니다.</p></article>
+        </div>
+      </section>
+      <section class="section">
+        <p class="eyebrow">Screens</p>
+        <h2>프로젝트 화면</h2>
+        <div class="gallery-grid"><img src="../../public/projects/ax-orchestration/home-runner.png" alt="AX Orchestration Platform 실행 입력 화면" loading="lazy" /><img src="../../public/projects/ax-orchestration/flow-builder.png" alt="AX Orchestration Platform Home 2D 실행 시각화 화면" loading="lazy" /><img src="../../public/projects/ax-orchestration/crew-builder.png" alt="AX Orchestration Platform Agent 생성 탭 화면" loading="lazy" /><img src="../../public/projects/ax-orchestration/run-launcher.png" alt="AX Orchestration Platform Task 생성 탭 화면" loading="lazy" /><img src="../../public/projects/ax-orchestration/agents-library.png" alt="AX Orchestration Platform Flow 생성 탭 화면" loading="lazy" /><img src="../../public/projects/ax-orchestration/tasks-library.png" alt="AX Orchestration Platform Crew 생성 탭 화면" loading="lazy" /></div>
+      </section>
+      <section class="section contact-band">
+        <div><p class="eyebrow">Learning</p><h2>배운 점</h2><p>React Flow 기반 인터페이스에서 도메인 모델과 화면 상태를 분리하면 복잡한 실행 흐름도 안정적으로 표현할 수 있습니다.</p></div>
+        <a class="button" href="../../projects/">목록으로 돌아가기</a>
+      </section>
+    </main>
     <footer class="footer"><div class="footer-inner"><span>© 2026 금동호</span><a class="text-link" href="../../projects/">프로젝트 목록</a></div></footer>
   </body>
 </html>

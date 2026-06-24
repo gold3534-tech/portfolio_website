@@ -1,9 +1,63 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ko">
-  <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="description" content="서울시 교통사고 위험 예측 지도 프로젝트 상세 페이지입니다." /><title>서울시 교통사고 위험 예측 지도 | 금동호</title><link rel="icon" href="../../favicon.svg" type="image/svg+xml" /><link rel="stylesheet" href="../../styles.css" /><script src="../../data.js" defer></script><script src="../../script.js" defer></script></head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="서울시 교통사고·기상·교통량 데이터를 학습해 자치구별 사고 위험도를 지도에 시각화한 예측 시스템" />
+    <meta property="og:title" content="서울시 교통사고 위험 예측 지도 | 금동호" />
+    <meta property="og:description" content="모델 학습 결과를 지도 UI로 연결한 데이터 프로젝트" />
+    <meta property="og:type" content="article" />
+    <title>서울시 교통사고 위험 예측 지도 | 금동호</title>
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../styles.css" />
+    <script src="../../data.js" defer></script>
+    <script src="../../script.js" defer></script>
+  </head>
   <body>
     <header class="site-header"><div class="header-inner"><a class="brand" href="../../"><span class="brand-mark">KD</span><span>금동호</span></a><nav class="desktop-nav" aria-label="주요 메뉴"><a data-nav-link href="../../">홈</a><a data-nav-link href="../../projects/">프로젝트</a><a data-nav-link href="../../skills/">기술 스택</a><a data-nav-link href="../../about/">소개</a><a data-nav-link href="../../github/">GitHub</a></nav><div class="header-actions"><a class="icon-button" href="https://github.com/gold3534-tech" target="_blank" rel="noreferrer" aria-label="GitHub 열기">GH</a></div><button class="menu-button" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="모바일 메뉴 열기">☰</button></div><nav id="mobile-menu" class="mobile-menu" data-mobile-menu hidden aria-label="모바일 메뉴"><a data-nav-link href="../../">홈</a><a data-nav-link href="../../projects/">프로젝트</a><a data-nav-link href="../../skills/">기술 스택</a><a data-nav-link href="../../about/">소개</a><a data-nav-link href="../../github/">GitHub</a></nav></header>
-    <main data-project-detail="traffic-accident"></main>
+    <main data-project-detail="traffic-accident">
+      <section class="detail-hero">
+        <div>
+          <p class="eyebrow">Project</p>
+          <h1>서울시 교통사고 위험 예측 지도</h1>
+          <p class="lead">서울시 교통사고·기상·교통량 데이터를 학습해 자치구별 사고 위험도를 지도에 시각화한 예측 시스템</p>
+          <dl class="detail-meta">
+            <div><dt>기간·형태</dt><dd>2025.12 · 팀 프로젝트</dd></div><div><dt>직접 담당</dt><dd>공공데이터 전처리, LightGBM 학습, Flask 예측 화면</dd></div><div><dt>배포·공개</dt><dd>로컬 데모</dd></div><div><dt>핵심 성과</dt><dd>기상·교통·사고 데이터를 자치구별 위험 예측 지도로 시각화</dd></div><div><dt>역할 요약</dt><dd>데이터 수집·전처리, LightGBM 모델 학습, Flask 기반 예측 화면 구현</dd></div><div><dt>분류</dt><dd>데이터</dd></div>
+          </dl>
+          <div class="proof-list proof-list-hero"><span>LightGBM</span><span>SMOTE</span><span>공공데이터</span><span>Choropleth Map</span></div>
+          <div class="tag-list"><span>Python</span><span>Pandas</span><span>LightGBM</span><span>SMOTE</span><span>Flask</span><span>JavaScript</span><span>기상청 API</span><span>TOPIS API</span><span>Choropleth Map</span></div>
+          <div class="hero-actions">
+            
+            
+          </div>
+        </div>
+        <div class="detail-cover"><img src="../../public/projects/traffic-accident/BIN0005.png" alt="서울시 교통사고 위험 예측 지도 대표 화면" loading="lazy" /></div>
+      </section>
+      <section class="section two-column">
+        <article><p class="eyebrow">Overview</p><h2>프로젝트 소개</h2><p>2021년부터 2023년까지의 서울시 교통사고 데이터에 기온, 강수량, 적설량, 교통량, 지역 통계 데이터를 결합해 자치구별 사고 발생 확률을 예측했습니다. 결과는 서울시 행정구역 단위의 Choropleth 지도에 색상 농도로 표시해 고위험 지역을 빠르게 파악할 수 있게 구성했습니다.</p></article>
+        <article><p class="eyebrow">Problem</p><h2>기획 배경</h2><p>기존 사고 다발 지역 분석은 과거 통계 중심이라 실시간 기상 변화와 교통량 변화를 반영하기 어렵습니다. 이 프로젝트는 정적인 사고 통계에 기상청 초단기실황 API와 서울시 TOPIS 교통량 데이터를 결합해 현재 조건에서의 동적인 위험도 변화를 보여주는 것을 목표로 했습니다.</p></article>
+      </section>
+      <section class="section split-panel">
+        <div><p class="eyebrow">Flow</p><h2>시스템 또는 데이터 흐름</h2><p>TAAS·TMACS·기상청·서울시 열린데이터 수집 → 자치구·시간대·요일 단위 전처리 → 결측치 보완과 SMOTE 적용 → LightGBM 이진 분류 모델 학습 → Flask API 연결 → 사용자 입력 또는 실시간 데이터 기반 예측 → 서울시 위험도 지도 시각화</p></div>
+        <div class="feature-list"><span>2021~2023년 교통사고·기상·교통량 데이터 결합</span><span>자치구·시간대·요일 기반 분석 단위 설계</span><span>SMOTE를 활용한 사고 발생 클래스 불균형 보정</span><span>LightGBM 기반 사고 발생 확률 예측</span><span>사용자 입력 조건 기반 위험도 예측</span><span>기상청·TOPIS API 기반 실시간 위험도 예측</span><span>서울시 자치구 Choropleth 지도 시각화</span><span>Spearman ρ, RMSE, Jaccard 등 예측 결과 비교</span></div>
+      </section>
+      <section class="section">
+        <p class="eyebrow">Troubleshooting</p>
+        <h2>문제 해결 경험</h2>
+        <div class="trouble-grid">
+          <article class="trouble-card"><h3>문제</h3><p>교통사고가 발생하지 않은 샘플이 많아 모델이 사고 미발생 쪽으로 치우칠 가능성이 있었습니다.</p><h3>원인</h3><p>자치구, 시간대, 요일 조합 단위로 데이터를 만들면 실제 사고 발생 클래스보다 미발생 클래스가 훨씬 많아집니다.</p><h3>해결 과정</h3><p>사고 발생 여부를 이진 분류 문제로 정의하고 SMOTE를 적용해 사고 발생 클래스의 학습 비중을 보정했습니다.</p><h3>배운 점</h3><p>위험 예측 모델은 전체 정확도만 높이는 것보다 실제 사고 가능성을 놓치지 않도록 데이터 분포를 먼저 다루는 과정이 중요했습니다.</p></article><article class="trouble-card"><h3>문제</h3><p>사용자 입력 기반 예측과 실시간 데이터 기반 예측 결과를 단순히 화면만으로 비교하기 어려웠습니다.</p><h3>원인</h3><p>두 예측은 같은 모델을 사용하지만 입력 조건이 달라 지역별 위험 순위와 확률 차이를 정량적으로 확인할 필요가 있었습니다.</p><h3>해결 과정</h3><p>Spearman 순위상관계수, RMSE, Bias, Jaccard Index, Elasticity를 함께 계산해 공간적 위험 순위와 예측값 차이를 비교했습니다.</p><h3>배운 점</h3><p>지도 기반 결과는 시각화와 함께 순위·오차·고위험군 일치도를 같이 제시해야 예측 결과의 의미가 분명해졌습니다.</p></article>
+        </div>
+      </section>
+      <section class="section">
+        <p class="eyebrow">Screens</p>
+        <h2>프로젝트 화면</h2>
+        <div class="gallery-grid"><img src="../../public/projects/traffic-accident/BIN0004.png" alt="교통사고 위험예측지도 예측 방식 선택 화면" loading="lazy" /><img src="../../public/projects/traffic-accident/BIN0002.png" alt="사용자 입력 조건 기반 서울시 자치구별 교통사고 위험도 지도" loading="lazy" /><img src="../../public/projects/traffic-accident/BIN0005.png" alt="실시간 기상 정보 기반 서울시 자치구별 교통사고 위험도 지도" loading="lazy" /><img src="../../public/projects/traffic-accident/BIN0001.png" alt="오프라인 학습 단계와 온라인 예측 단계로 구성된 시스템 구조도" loading="lazy" /></div>
+      </section>
+      <section class="section contact-band">
+        <div><p class="eyebrow">Learning</p><h2>배운 점</h2><p>데이터 수집과 전처리, 모델 학습, API, 지도 화면이 하나로 이어져야 예측 결과가 사용자가 판단할 수 있는 서비스 형태로 전달된다는 점을 경험했습니다.</p></div>
+        <a class="button" href="../../projects/">목록으로 돌아가기</a>
+      </section>
+    </main>
     <footer class="footer"><div class="footer-inner"><span>© 2026 금동호</span><a class="text-link" href="../../projects/">프로젝트 목록</a></div></footer>
   </body>
 </html>

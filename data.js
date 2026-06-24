@@ -348,6 +348,97 @@ const PROJECTS = [
   },
 ];
 
+const PROJECT_PROOFS = {
+  semoduck: {
+    priority: "primary",
+    period: "2026.05 · 개인 프로젝트",
+    ownership: "기획, UI, 인증, DB, 게시글·댓글, 굿즈 검색, 관리자 기능, 배포",
+    deployment: "Vercel · Supabase",
+    impact: "팬덤 활동, 굿즈 탐색, 중고 거래를 하나의 권한 흐름으로 통합",
+    proof: ["Supabase SSR 인증", "RLS 권한 설계", "외부 굿즈 캐시 구조", "관리자 신고 처리"],
+    cardNote: "인증·권한·DB·외부 상품 연동까지 직접 구현한 대표 풀스택 프로젝트",
+    troubleshooting: [
+      {
+        problem: "외부 굿즈 상세 정보를 쿼리 파라미터로 모두 넘기면서 URL이 길어지고 새로고침·공유 시 데이터 안정성이 떨어졌습니다.",
+        cause: "외부 API 상품 데이터를 내부 DB에 저장하지 않고 화면 상태로만 전달했기 때문에 상세 페이지가 URL과 클라이언트 상태에 과하게 의존했습니다.",
+        solution: "외부 상품 ID를 기준으로 external_goods 테이블에 upsert하고 /goods/external/[id] 경로에서 다시 조회하도록 바꾸어 상세 페이지를 안정적인 리소스로 분리했습니다.",
+        learned: "외부 API 데이터도 서비스 안에서 반복 조회되고 공유되는 순간 내부 식별자와 캐시 전략이 필요하다는 점을 확인했습니다.",
+      },
+      {
+        problem: "작성자, 관리자, 일반 사용자의 수정·삭제·신고 권한이 화면별로 다르게 동작했습니다.",
+        cause: "UI 조건과 Supabase RLS 정책이 같은 기준으로 정리되지 않아 클라이언트에서는 보이지만 서버에서 거절되는 흐름이 생겼습니다.",
+        solution: "사용자 ID, 작성자 ID, 관리자 여부를 기능별 체크 기준으로 정리하고 UI 표시 조건과 RLS 정책을 같은 권한 모델에 맞췄습니다.",
+        learned: "권한은 버튼을 숨기는 문제가 아니라 데이터 요청 단계까지 일관되게 막아야 하는 서비스 설계 문제였습니다.",
+      },
+    ],
+  },
+  nadeurism: {
+    priority: "launch",
+    period: "2026.06 · 팀 프로젝트 · 원스토어 출시",
+    ownership: "Flutter 화면, 소셜 로그인, 추천 API 연동, 여행 준비·지도·프로필 흐름",
+    deployment: "One Store",
+    impact: "지역·테마·예산 조건에 맞춘 여행지 추천 모바일 앱 출시",
+    proof: ["Google 로그인", "Kakao 로그인", "FastAPI 추천 연동", "Kakao Map 표시", "원스토어 등록"],
+    cardNote: "스토어 출시 경험이 있는 Flutter·FastAPI 기반 모바일 서비스",
+  },
+  jobnawa: {
+    priority: "data",
+    period: "2026.04 · 팀 프로젝트",
+    ownership: "채용 데이터 수집·정제, Streamlit 분석 화면, 기술 스택 시각화",
+    deployment: "GitHub 공개 저장소",
+    impact: "분산된 IT 채용 공고를 검색·분석 가능한 대시보드로 정리",
+    proof: ["Selenium 크롤링", "공고 데이터 정제", "기술 스택 WordCloud", "지역 분포 지도"],
+    cardNote: "채용 공고 수집과 분석 화면을 연결한 데이터 기반 프로젝트",
+  },
+  "ax-orchestration": {
+    priority: "ai-ui",
+    period: "2026.06 · 개인 프로젝트",
+    ownership: "React Flow 기반 워크플로 UI, 실행 상태 시각화, Agent·Task 모델링",
+    deployment: "GitHub 공개 저장소",
+    impact: "AI Agent 실행 흐름을 노드와 상태 중심 UI로 확인",
+    proof: ["React Flow", "실행 상태 UI", "Agent 모델", "Task 모델", "WebSocket 구조"],
+    cardNote: "복잡한 AI 실행 과정을 시각적으로 다루는 프론트엔드 실험",
+  },
+  "card-rag": {
+    priority: "ai",
+    period: "2026.03 · 개인 프로젝트",
+    ownership: "문서화, BM25·Vector 검색, 추천 이유 생성 흐름",
+    deployment: "GitHub 공개 저장소",
+    impact: "카드 혜택 데이터를 검색 기반 추천 흐름으로 변환",
+    proof: ["RAG", "ChromaDB", "BM25", "추천 이유 생성"],
+    cardNote: "검색과 생성형 AI를 함께 사용한 추천 시스템",
+  },
+  "resume-interview-agent": {
+    priority: "backend-ai",
+    period: "2026.03 · 개인 프로젝트",
+    ownership: "PDF 분석 API, 면접 질문 생성, 평가 결과와 Slack 알림 연동",
+    deployment: "GitHub 공개 저장소",
+    impact: "이력서 기반 기술 면접 질문과 평가 흐름 자동화",
+    proof: ["FastAPI", "PDF parsing", "LangChain", "Slack API"],
+    cardNote: "문서 분석과 LLM 응답을 백엔드 API로 연결",
+  },
+  "traffic-accident": {
+    priority: "data",
+    period: "2025.12 · 팀 프로젝트",
+    ownership: "공공데이터 전처리, LightGBM 학습, Flask 예측 화면",
+    deployment: "로컬 데모",
+    impact: "기상·교통·사고 데이터를 자치구별 위험 예측 지도로 시각화",
+    proof: ["LightGBM", "SMOTE", "공공데이터", "Choropleth Map"],
+    cardNote: "모델 학습 결과를 지도 UI로 연결한 데이터 프로젝트",
+  },
+  "portfolio-website": {
+    priority: "support",
+    period: "2026.06 · 개인 프로젝트",
+    ownership: "정적 사이트 구조, 반응형 UI, GitHub Pages 배포",
+    deployment: "GitHub Pages",
+    impact: "프로젝트 기록을 지원자 관점으로 정리한 포트폴리오 사이트",
+    proof: ["HTML", "CSS", "JavaScript", "GitHub Pages"],
+    cardNote: "프로젝트를 설명하기 위한 정적 포트폴리오 구현",
+  },
+};
+
+PROJECTS.forEach((project) => Object.assign(project, PROJECT_PROOFS[project.slug] || {}));
+
 const SKILL_GROUPS = [
   {
     title: "Frontend",

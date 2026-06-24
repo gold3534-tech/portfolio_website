@@ -8,7 +8,6 @@ const requiredRoutes = [
   "index.html",
   "projects/index.html",
   "projects/semoduck/index.html",
-  "projects/travelmate/index.html",
   "projects/nadeurism/index.html",
   "projects/jobnawa/index.html",
   "projects/ax-orchestration/index.html",

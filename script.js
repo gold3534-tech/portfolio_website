@@ -81,9 +81,10 @@ function projectCard(project) {
     project.githubUrl ? `<a class="text-link" href="${project.githubUrl}" target="_blank" rel="noreferrer">GitHub</a>` : "",
     project.liveUrl ? `<a class="text-link" href="${project.liveUrl}" target="_blank" rel="noreferrer">${project.liveLabel || "서비스"}</a>` : "",
   ].filter(Boolean).join("");
+  const proof = project.proof?.slice(0, 4).map((item) => `<span>${item}</span>`).join("") || "";
 
   return `
-    <article class="project-card" data-category="${project.category.join(" ")}">
+    <article class="project-card project-card-${project.priority || "standard"}" data-category="${project.category.join(" ")}">
       ${imageMarkup(project)}
       <div class="project-card-body">
         <div class="project-card-top">
@@ -91,8 +92,10 @@ function projectCard(project) {
           <a class="card-arrow" href="${withBase(`/projects/${project.slug}/`)}" aria-label="${project.title} 상세 보기">→</a>
         </div>
         <h3><a href="${withBase(`/projects/${project.slug}/`)}">${project.title}</a></h3>
-        <p>${project.summary}</p>
+        <p>${project.cardNote || project.summary}</p>
+        ${project.period ? `<div class="project-facts"><span>${project.period}</span><span>${project.deployment}</span></div>` : ""}
         <div class="tag-list">${stackMarkup(project.techStack, 5)}</div>
+        ${proof ? `<div class="proof-list">${proof}</div>` : ""}
         <div class="card-actions">
           <a class="button button-small" href="${withBase(`/projects/${project.slug}/`)}">상세 보기</a>
           ${links}
@@ -105,7 +108,7 @@ function projectCard(project) {
 function renderFeaturedProjects() {
   const target = $("[data-featured-projects]");
   if (!target) return;
-  const featured = ["semoduck", "nadeurism", "ax-orchestration"]
+  const featured = ["semoduck", "nadeurism", "ax-orchestration", "jobnawa"]
     .map((slug) => PROJECTS.find((project) => project.slug === slug))
     .filter(Boolean);
   target.innerHTML = featured.map(projectCard).join("");
@@ -156,6 +159,14 @@ function renderProjectDetail() {
   }
 
   document.title = `${project.title} | 금동호`;
+  const detailMeta = [
+    project.period ? ["기간·형태", project.period] : null,
+    project.ownership ? ["직접 담당", project.ownership] : null,
+    project.deployment ? ["배포·공개", project.deployment] : null,
+    project.impact ? ["핵심 성과", project.impact] : null,
+    project.role ? ["역할 요약", project.role] : null,
+    ["분류", project.category.join(", ")],
+  ].filter(Boolean);
   target.innerHTML = `
     <section class="detail-hero">
       <div>
@@ -163,9 +174,9 @@ function renderProjectDetail() {
         <h1>${project.title}</h1>
         <p class="lead">${project.summary}</p>
         <dl class="detail-meta">
-          ${project.role ? `<div><dt>담당 역할</dt><dd>${project.role}</dd></div>` : ""}
-          <div><dt>분류</dt><dd>${project.category.join(", ")}</dd></div>
+          ${detailMeta.map(([label, value]) => `<div><dt>${label}</dt><dd>${value}</dd></div>`).join("")}
         </dl>
+        ${project.proof ? `<div class="proof-list proof-list-hero">${project.proof.map((item) => `<span>${item}</span>`).join("")}</div>` : ""}
         <div class="tag-list">${stackMarkup(project.techStack)}</div>
         <div class="hero-actions">
           ${project.githubUrl ? `<a class="button" href="${project.githubUrl}" target="_blank" rel="noreferrer">GitHub 보기</a>` : ""}

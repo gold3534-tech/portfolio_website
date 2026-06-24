@@ -1,9 +1,63 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ko">
-  <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="description" content="AI 카드 추천 RAG 시스템 프로젝트 상세 페이지입니다." /><title>AI 카드 추천 RAG 시스템 | 금동호</title><link rel="icon" href="../../favicon.svg" type="image/svg+xml" /><link rel="stylesheet" href="../../styles.css" /><script src="../../data.js" defer></script><script src="../../script.js" defer></script></head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="사용자 질문을 분석해 적절한 카드를 검색하고 추천하는 RAG 기반 서비스" />
+    <meta property="og:title" content="AI 카드 추천 RAG 시스템 | 금동호" />
+    <meta property="og:description" content="검색과 생성형 AI를 함께 사용한 추천 시스템" />
+    <meta property="og:type" content="article" />
+    <title>AI 카드 추천 RAG 시스템 | 금동호</title>
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../styles.css" />
+    <script src="../../data.js" defer></script>
+    <script src="../../script.js" defer></script>
+  </head>
   <body>
     <header class="site-header"><div class="header-inner"><a class="brand" href="../../"><span class="brand-mark">KD</span><span>금동호</span></a><nav class="desktop-nav" aria-label="주요 메뉴"><a data-nav-link href="../../">홈</a><a data-nav-link href="../../projects/">프로젝트</a><a data-nav-link href="../../skills/">기술 스택</a><a data-nav-link href="../../about/">소개</a><a data-nav-link href="../../github/">GitHub</a></nav><div class="header-actions"><a class="icon-button" href="https://github.com/gold3534-tech" target="_blank" rel="noreferrer" aria-label="GitHub 열기">GH</a></div><button class="menu-button" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="모바일 메뉴 열기">☰</button></div><nav id="mobile-menu" class="mobile-menu" data-mobile-menu hidden aria-label="모바일 메뉴"><a data-nav-link href="../../">홈</a><a data-nav-link href="../../projects/">프로젝트</a><a data-nav-link href="../../skills/">기술 스택</a><a data-nav-link href="../../about/">소개</a><a data-nav-link href="../../github/">GitHub</a></nav></header>
-    <main data-project-detail="card-rag"></main>
+    <main data-project-detail="card-rag">
+      <section class="detail-hero">
+        <div>
+          <p class="eyebrow">Project</p>
+          <h1>AI 카드 추천 RAG 시스템</h1>
+          <p class="lead">사용자 질문을 분석해 적절한 카드를 검색하고 추천하는 RAG 기반 서비스</p>
+          <dl class="detail-meta">
+            <div><dt>기간·형태</dt><dd>2026.03 · 개인 프로젝트</dd></div><div><dt>직접 담당</dt><dd>문서화, BM25·Vector 검색, 추천 이유 생성 흐름</dd></div><div><dt>배포·공개</dt><dd>GitHub 공개 저장소</dd></div><div><dt>핵심 성과</dt><dd>카드 혜택 데이터를 검색 기반 추천 흐름으로 변환</dd></div><div><dt>역할 요약</dt><dd>RAG 문서 구성, 검색 흐름, 추천 이유 생성</dd></div><div><dt>분류</dt><dd>AI, 데이터</dd></div>
+          </dl>
+          <div class="proof-list proof-list-hero"><span>RAG</span><span>ChromaDB</span><span>BM25</span><span>추천 이유 생성</span></div>
+          <div class="tag-list"><span>Python</span><span>OpenAI API</span><span>LangChain</span><span>ChromaDB</span><span>BM25</span><span>Vector Search</span><span>Streamlit</span></div>
+          <div class="hero-actions">
+            <a class="button" href="https://github.com/gold3534-tech/ai-card-recommendation-rag" target="_blank" rel="noreferrer">GitHub 보기</a>
+            
+          </div>
+        </div>
+        <div class="detail-cover"><img src="../../public/projects/card-rag/cover.png" alt="AI 카드 추천 RAG 시스템 대표 화면" loading="lazy" /></div>
+      </section>
+      <section class="section two-column">
+        <article><p class="eyebrow">Overview</p><h2>프로젝트 소개</h2><p>사용자의 소비 패턴과 질문을 분석해 관련 카드 후보를 검색하고, 추천 이유를 함께 생성하는 RAG 서비스입니다.</p></article>
+        <article><p class="eyebrow">Problem</p><h2>기획 배경</h2><p>카드 상품은 혜택 조건이 복잡해 사용자가 자신에게 맞는 카드를 직접 비교하기 어렵습니다. 검색과 생성형 AI를 결합해 납득 가능한 추천 흐름을 만들었습니다.</p></article>
+      </section>
+      <section class="section split-panel">
+        <div><p class="eyebrow">Flow</p><h2>시스템 또는 데이터 흐름</h2><p>사용자 질문 → 소비 조건 추출 → Vector Search와 BM25 검색 → 조건 필터링 → LLM 추천 이유 생성</p></div>
+        <div class="feature-list"><span>문서 임베딩</span><span>벡터 검색</span><span>키워드 검색</span><span>하이브리드 검색</span><span>추천 이유 생성</span><span>검색 결과와 LLM 답변 연결</span></div>
+      </section>
+      <section class="section">
+        <p class="eyebrow">Troubleshooting</p>
+        <h2>문제 해결 경험</h2>
+        <div class="trouble-grid">
+          <article class="trouble-card"><h3>문제</h3><p>벡터 검색만으로는 특정 혜택 키워드가 포함된 카드를 놓치는 경우가 있었습니다.</p><h3>원인</h3><p>사용자 질문의 의미 유사도와 카드 혜택의 정확한 키워드 매칭이 항상 같은 방향으로 작동하지 않았습니다.</p><h3>해결 과정</h3><p>Vector Search와 BM25를 함께 사용하고 검색 결과를 결합해 후보를 구성했습니다.</p><h3>배운 점</h3><p>RAG 추천은 임베딩 검색만 믿기보다 데이터 성격에 맞는 검색 방식을 조합하는 것이 안정적입니다.</p></article>
+        </div>
+      </section>
+      <section class="section">
+        <p class="eyebrow">Screens</p>
+        <h2>프로젝트 화면</h2>
+        <div class="gallery-grid"><img src="../../public/projects/card-rag/cover.png" alt="AI 카드 추천 RAG 시스템 화면" loading="lazy" /></div>
+      </section>
+      <section class="section contact-band">
+        <div><p class="eyebrow">Learning</p><h2>배운 점</h2><p>정형 데이터를 문서와 metadata로 나누어 설계하면 검색 품질과 추천 설명을 함께 개선할 수 있습니다.</p></div>
+        <a class="button" href="../../projects/">목록으로 돌아가기</a>
+      </section>
+    </main>
     <footer class="footer"><div class="footer-inner"><span>© 2026 금동호</span><a class="text-link" href="../../projects/">프로젝트 목록</a></div></footer>
   </body>
 </html>
