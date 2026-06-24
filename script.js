@@ -168,6 +168,9 @@ function renderProjectDetail() {
     ["분류", project.category.join(", ")],
   ].filter(Boolean);
   target.innerHTML = `
+    <div class="detail-topbar">
+      <a class="back-link" href="${withBase("/projects/")}">← 프로젝트 목록</a>
+    </div>
     <section class="detail-hero">
       <div>
         <p class="eyebrow">Project</p>

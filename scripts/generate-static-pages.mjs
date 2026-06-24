@@ -76,6 +76,9 @@ function projectDetail(project) {
   <body>
     ${header("../../")}
     <main data-project-detail="${project.slug}">
+      <div class="detail-topbar">
+        <a class="back-link" href="../../projects/">← 프로젝트 목록</a>
+      </div>
       <section class="detail-hero">
         <div>
           <p class="eyebrow">Project</p>
