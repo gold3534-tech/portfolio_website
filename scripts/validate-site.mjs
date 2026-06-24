@@ -9,6 +9,8 @@ const requiredRoutes = [
   "projects/index.html",
   "projects/semoduck/index.html",
   "projects/travelmate/index.html",
+  "projects/nadeurism/index.html",
+  "projects/jobnawa/index.html",
   "projects/ax-orchestration/index.html",
   "projects/card-rag/index.html",
   "projects/resume-interview-agent/index.html",
@@ -60,7 +62,7 @@ for (const file of await listHtml(root)) {
   const html = readFileSync(file, "utf8");
   if (!html.includes('lang="ko"')) throw new Error(`Missing Korean lang attribute: ${file}`);
   if (!html.includes('name="viewport"')) throw new Error(`Missing viewport: ${file}`);
-  if (!html.includes("/styles.css")) throw new Error(`Missing stylesheet link: ${file}`);
+  if (!/href="(?:\.\.\/)*styles\.css"/.test(html)) throw new Error(`Missing stylesheet link: ${file}`);
 }
 
 console.log(`Validated ${requiredRoutes.length} routes, ${sandbox.PROJECTS.length} projects, ${sandbox.SKILL_GROUPS.length} skill groups.`);

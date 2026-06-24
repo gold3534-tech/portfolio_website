@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>/</loc></url>
-  <url><loc>/projects/</loc></url>
-  <url><loc>/projects/semoduck/</loc></url>
-  <url><loc>/projects/travelmate/</loc></url>
-  <url><loc>/projects/ax-orchestration/</loc></url>
-  <url><loc>/projects/card-rag/</loc></url>
-  <url><loc>/projects/resume-interview-agent/</loc></url>
-  <url><loc>/projects/portfolio-website/</loc></url>
-  <url><loc>/projects/traffic-accident/</loc></url>
-  <url><loc>/skills/</loc></url>
-  <url><loc>/about/</loc></url>
-  <url><loc>/github/</loc></url>
+  <url><loc>https://gold3534-tech.github.io/portfolio_website/</loc></url>
+  <url><loc>https://gold3534-tech.github.io/portfolio_website/projects/</loc></url>
+  <url><loc>https://gold3534-tech.github.io/portfolio_website/projects/semoduck/</loc></url>
+  <url><loc>https://gold3534-tech.github.io/portfolio_website/projects/nadeurism/</loc></url>
+  <url><loc>https://gold3534-tech.github.io/portfolio_website/projects/jobnawa/</loc></url>
+  <url><loc>https://gold3534-tech.github.io/portfolio_website/projects/ax-orchestration/</loc></url>
+  <url><loc>https://gold3534-tech.github.io/portfolio_website/projects/card-rag/</loc></url>
+  <url><loc>https://gold3534-tech.github.io/portfolio_website/projects/resume-interview-agent/</loc></url>
+  <url><loc>https://gold3534-tech.github.io/portfolio_website/projects/portfolio-website/</loc></url>
+  <url><loc>https://gold3534-tech.github.io/portfolio_website/projects/traffic-accident/</loc></url>
+  <url><loc>https://gold3534-tech.github.io/portfolio_website/skills/</loc></url>
+  <url><loc>https://gold3534-tech.github.io/portfolio_website/about/</loc></url>
+  <url><loc>https://gold3534-tech.github.io/portfolio_website/github/</loc></url>
 </urlset>

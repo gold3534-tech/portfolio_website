@@ -6,10 +6,24 @@ function $all(selector, scope = document) {
   return Array.from(scope.querySelectorAll(selector));
 }
 
+const BASE_PATH = window.location.hostname.endsWith("github.io") ? "/portfolio_website" : "";
+
+function withBase(path) {
+  if (!path || /^(https?:|mailto:|tel:)/.test(path)) return path;
+  if (path.startsWith("/")) return `${BASE_PATH}${path}`;
+  return path;
+}
+
 function isCurrentPath(href) {
-  const path = window.location.pathname.replace(/\/index\.html$/, "/");
-  if (href === "/") return path === "/";
-  return path === href || path.startsWith(`${href}/`);
+  const path = window.location.pathname
+    .replace(BASE_PATH, "")
+    .replace(/\/index\.html$/, "/") || "/";
+  const normalizedHref = href
+    .replace(BASE_PATH, "")
+    .replace(/^\.\.\/|\.\//g, "/")
+    .replace(/\/index\.html$/, "/");
+  if (normalizedHref === "/" || normalizedHref === "") return path === "/";
+  return path === normalizedHref || path.startsWith(`${normalizedHref}/`);
 }
 
 function initNavigation() {
@@ -57,7 +71,7 @@ function imageMarkup(project, className = "project-image") {
   if (!project.thumbnail) return `<div class="${className}">${placeholder(project.title)}</div>`;
   return `
     <div class="${className}">
-      <img src="${project.thumbnail}" alt="${project.title} 대표 화면" loading="lazy" />
+      <img src="${withBase(project.thumbnail)}" alt="${project.title} 대표 화면" loading="lazy" />
     </div>
   `;
 }
@@ -74,13 +88,13 @@ function projectCard(project) {
       <div class="project-card-body">
         <div class="project-card-top">
           <div class="project-meta">${project.category.map((item) => `<span>${item}</span>`).join("")}</div>
-          <a class="card-arrow" href="/projects/${project.slug}/" aria-label="${project.title} 상세 보기">→</a>
+          <a class="card-arrow" href="${withBase(`/projects/${project.slug}/`)}" aria-label="${project.title} 상세 보기">→</a>
         </div>
-        <h3><a href="/projects/${project.slug}/">${project.title}</a></h3>
+        <h3><a href="${withBase(`/projects/${project.slug}/`)}">${project.title}</a></h3>
         <p>${project.summary}</p>
         <div class="tag-list">${stackMarkup(project.techStack, 5)}</div>
         <div class="card-actions">
-          <a class="button button-small" href="/projects/${project.slug}/">상세 보기</a>
+          <a class="button button-small" href="${withBase(`/projects/${project.slug}/`)}">상세 보기</a>
           ${links}
         </div>
       </div>
@@ -137,7 +151,7 @@ function renderProjectDetail() {
   const slug = target.dataset.projectDetail;
   const project = PROJECTS.find((item) => item.slug === slug);
   if (!project) {
-    target.innerHTML = `<section class="section narrow"><h1>프로젝트를 찾을 수 없습니다.</h1><a class="button" href="/projects/">프로젝트 목록으로</a></section>`;
+    target.innerHTML = `<section class="section narrow"><h1>프로젝트를 찾을 수 없습니다.</h1><a class="button" href="${withBase("/projects/")}">프로젝트 목록으로</a></section>`;
     return;
   }
 
@@ -203,7 +217,7 @@ function renderProjectDetail() {
         ${(project.screenshots.length ? project.screenshots : [""]).map((item) => {
           if (!item) return placeholder(project.title);
           const screenshot = screenshotInfo(item, project);
-          return `<img src="${screenshot.src}" alt="${screenshot.alt}" loading="lazy" />`;
+          return `<img src="${withBase(screenshot.src)}" alt="${screenshot.alt}" loading="lazy" />`;
         }).join("")}
       </div>
     </section>
@@ -213,7 +227,7 @@ function renderProjectDetail() {
         <h2>배운 점</h2>
         <p>${project.learned}</p>
       </div>
-      <a class="button" href="/projects/">목록으로 돌아가기</a>
+      <a class="button" href="${withBase("/projects/")}">목록으로 돌아가기</a>
     </section>
   `;
 }
