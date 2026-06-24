@@ -7,6 +7,9 @@ function $all(selector, scope = document) {
 }
 
 const BASE_PATH = window.location.hostname.endsWith("github.io") ? "/portfolio_website" : "";
+const REDUCED_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)");
+const FINE_POINTER = window.matchMedia("(hover: hover) and (pointer: fine)");
+let revealObserver;
 
 function withBase(path) {
   if (!path || /^(https?:|mailto:|tel:)/.test(path)) return path;
@@ -24,6 +27,132 @@ function isCurrentPath(href) {
     .replace(/\/index\.html$/, "/");
   if (normalizedHref === "/" || normalizedHref === "") return path === "/";
   return path === normalizedHref || path.startsWith(`${normalizedHref}/`);
+}
+
+function initRevealAnimations(scope = document) {
+  const targets = $all([
+    ".hero > *",
+    ".proof-band article",
+    ".section-header",
+    ".project-card",
+    ".work-card",
+    ".skill-group",
+    ".skill-item",
+    ".about-card",
+    ".about-copy article",
+    ".detail-hero",
+    ".two-column article",
+    ".split-panel",
+    ".trouble-card",
+    ".gallery-grid img",
+    ".contact-band",
+    ".github-profile",
+    ".repo-card",
+  ].join(","), scope).filter((element) => !element.dataset.revealReady);
+
+  if (!targets.length) return;
+
+  if (REDUCED_MOTION.matches || !("IntersectionObserver" in window)) {
+    targets.forEach((element) => {
+      element.dataset.revealReady = "true";
+      element.classList.add("is-visible");
+    });
+    return;
+  }
+
+  if (!revealObserver) {
+    revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.14, rootMargin: "0px 0px -8% 0px" });
+  }
+
+  targets.forEach((element, index) => {
+    element.dataset.revealReady = "true";
+    element.classList.add("reveal");
+    element.style.setProperty("--reveal-delay", `${Math.min((index % 7) * 70, 420)}ms`);
+
+    if (element.closest(".hero")) {
+      requestAnimationFrame(() => element.classList.add("is-visible"));
+      return;
+    }
+
+    revealObserver.observe(element);
+  });
+}
+
+function initPointerSpotlight() {
+  if (REDUCED_MOTION.matches || !FINE_POINTER.matches) return;
+
+  let frame = 0;
+  let pointerX = window.innerWidth / 2;
+  let pointerY = window.innerHeight * 0.18;
+  const root = document.documentElement;
+
+  function applyPointer() {
+    frame = 0;
+    root.style.setProperty("--pointer-x", `${pointerX}px`);
+    root.style.setProperty("--pointer-y", `${pointerY}px`);
+    root.style.setProperty("--spotlight-opacity", "1");
+  }
+
+  window.addEventListener("pointermove", (event) => {
+    if (event.pointerType && event.pointerType !== "mouse") return;
+    pointerX = event.clientX;
+    pointerY = event.clientY;
+    if (!frame) frame = requestAnimationFrame(applyPointer);
+  }, { passive: true });
+
+  window.addEventListener("pointerleave", () => {
+    root.style.setProperty("--spotlight-opacity", "0");
+  });
+
+  window.addEventListener("blur", () => {
+    root.style.setProperty("--spotlight-opacity", "0");
+  });
+}
+
+function initProjectTilt(scope = document) {
+  if (REDUCED_MOTION.matches || !FINE_POINTER.matches) return;
+
+  $all(".project-card", scope).forEach((card) => {
+    if (card.dataset.tiltReady) return;
+    card.dataset.tiltReady = "true";
+
+    let frame = 0;
+    let nextX = 0;
+    let nextY = 0;
+
+    function applyTilt() {
+      frame = 0;
+      card.style.setProperty("--tilt-x", `${nextX.toFixed(2)}deg`);
+      card.style.setProperty("--tilt-y", `${nextY.toFixed(2)}deg`);
+    }
+
+    card.addEventListener("mousemove", (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      nextX = y * -4;
+      nextY = x * 6;
+      if (!frame) frame = requestAnimationFrame(applyTilt);
+    }, { passive: true });
+
+    card.addEventListener("mouseleave", () => {
+      if (frame) cancelAnimationFrame(frame);
+      frame = 0;
+      card.style.setProperty("--tilt-x", "0deg");
+      card.style.setProperty("--tilt-y", "0deg");
+    });
+  });
+}
+
+function enhanceDynamicContent(scope = document) {
+  initRevealAnimations(scope);
+  initProjectTilt(scope);
 }
 
 function initNavigation() {
@@ -112,6 +241,7 @@ function renderFeaturedProjects() {
     .map((slug) => PROJECTS.find((project) => project.slug === slug))
     .filter(Boolean);
   target.innerHTML = featured.map(projectCard).join("");
+  enhanceDynamicContent(target);
 }
 
 function renderProjectsPage() {
@@ -141,6 +271,7 @@ function renderProjectsPage() {
   function renderList() {
     const visible = active === "전체" ? PROJECTS : PROJECTS.filter((project) => project.category.includes(active));
     target.innerHTML = visible.map(projectCard).join("");
+    enhanceDynamicContent(target);
   }
 
   renderFilters();
@@ -244,6 +375,7 @@ function renderProjectDetail() {
       <a class="button" href="${withBase("/projects/")}">목록으로 돌아가기</a>
     </section>
   `;
+  enhanceDynamicContent(target);
 }
 
 function renderSkillsPage() {
@@ -265,6 +397,7 @@ function renderSkillsPage() {
       </div>
     </section>
   `).join("");
+  enhanceDynamicContent(target);
 }
 
 function renderSkillPreview() {
@@ -325,6 +458,7 @@ async function renderGithubPage() {
         <div class="repo-grid">${featured.map(repoCard).join("")}</div>
       </section>
     `;
+    enhanceDynamicContent(target);
   } catch (error) {
     target.innerHTML = `
       <section class="fallback-card">
@@ -334,6 +468,7 @@ async function renderGithubPage() {
         <a class="button" href="${SITE.githubUrl}" target="_blank" rel="noreferrer">GitHub로 이동</a>
       </section>
     `;
+    enhanceDynamicContent(target);
   }
 }
 
@@ -357,9 +492,11 @@ function repoCard(repo) {
 }
 
 initNavigation();
+initPointerSpotlight();
 renderFeaturedProjects();
 renderProjectsPage();
 renderProjectDetail();
 renderSkillsPage();
 renderSkillPreview();
 renderGithubPage();
+enhanceDynamicContent(document);
