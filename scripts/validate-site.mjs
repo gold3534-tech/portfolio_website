@@ -13,7 +13,6 @@ const requiredRoutes = [
   "projects/ax-orchestration/index.html",
   "projects/card-rag/index.html",
   "projects/resume-interview-agent/index.html",
-  "projects/portfolio-website/index.html",
   "projects/traffic-accident/index.html",
   "skills/index.html",
   "about/index.html",

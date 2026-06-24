@@ -218,7 +218,6 @@ function projectCard(project) {
       <div class="project-card-body">
         <div class="project-card-top">
           <div class="project-meta">${project.category.map((item) => `<span>${item}</span>`).join("")}</div>
-          <a class="card-arrow" href="${withBase(`/projects/${project.slug}/`)}" aria-label="${project.title} 상세 보기">→</a>
         </div>
         <h3><a href="${withBase(`/projects/${project.slug}/`)}">${project.title}</a></h3>
         <p>${project.cardNote || project.summary}</p>

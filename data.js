@@ -295,31 +295,6 @@ const PROJECTS = [
     learned: "문서 분석, LLM 질문 생성, 웹 UI, 외부 알림 API를 연결하면서 AI 기능을 실제 업무 흐름에 붙이는 구조를 경험했습니다.",
   },
   {
-    slug: "portfolio-website",
-    title: "Portfolio Website",
-    summary: "금동호의 프로젝트와 기술 스택을 정리한 정적 포트폴리오 웹사이트",
-    description: "HTML, CSS, JavaScript 기반으로 프로젝트 데이터와 다중 페이지 라우트를 구성한 포트폴리오 사이트입니다.",
-    category: ["프론트엔드"],
-    role: "사이트 구조, 반응형 UI, 프로젝트 데이터 구성",
-    techStack: ["HTML", "CSS", "JavaScript", "GitHub Pages", "Responsive UI"],
-    thumbnail: "",
-    screenshots: [],
-    githubUrl: "https://github.com/gold3534-tech/portfolio_website",
-    overview: "프로젝트 목록, 상세 페이지, 기술 스택, 소개, GitHub 정보를 하나의 정적 사이트 안에서 탐색할 수 있도록 구성했습니다.",
-    background: "단순 원페이지보다 실제 라우트와 상세 페이지가 있는 포트폴리오가 프로젝트 흐름을 더 명확하게 보여줄 수 있습니다.",
-    flow: "공통 프로젝트 데이터 → 목록 카드 렌더링 → 상세 라우트 렌더링 → GitHub 공개 API 정보 표시",
-    features: ["다중 페이지 정적 라우트", "프로젝트 필터", "프로젝트 상세 페이지", "반응형 헤더와 모바일 메뉴", "GitHub API fallback UI", "SEO 파일 구성"],
-    troubleshooting: [
-      {
-        problem: "기존 정적 사이트는 원페이지와 모달 중심이라 새로고침 가능한 상세 경로가 없었습니다.",
-        cause: "프로젝트 데이터를 화면 내부에서 직접 다루고 실제 파일 기반 라우트가 분리되어 있지 않았습니다.",
-        solution: "공통 데이터 파일과 폴더 기반 index.html 라우트를 만들고 같은 렌더링 스크립트를 공유하도록 바꿨습니다.",
-        learned: "정적 사이트에서도 파일 구조와 데이터 분리를 잘 잡으면 포트폴리오 규모 확장이 가능합니다.",
-      },
-    ],
-    learned: "프레임워크 없이도 접근 가능한 경로, 반응형 UI, 데이터 분리를 갖춘 포트폴리오 구조를 만들 수 있었습니다.",
-  },
-  {
     slug: "traffic-accident",
     title: "서울시 교통사고 위험 예측 지도",
     summary: "서울시 교통사고·기상·교통량 데이터를 학습해 자치구별 사고 위험도를 지도에 시각화한 예측 시스템",
@@ -446,15 +421,6 @@ const PROJECT_PROOFS = {
     proof: ["LightGBM", "SMOTE", "공공데이터", "Choropleth Map"],
     cardNote: "LightGBM 예측 결과를 서울시 위험도 지도 UI로 연결",
   },
-  "portfolio-website": {
-    priority: "support",
-    period: "2026.06 · 개인 프로젝트",
-    ownership: "정적 사이트 구조, 반응형 UI, GitHub Pages 배포",
-    deployment: "GitHub Pages",
-    impact: "프로젝트 기록을 지원자 관점의 정적 사이트로 정리하고 GitHub Pages에 배포했습니다.",
-    proof: ["HTML", "CSS", "JavaScript", "GitHub Pages"],
-    cardNote: "프로젝트 근거와 상세 HTML을 정적으로 생성하는 포트폴리오 사이트",
-  },
 };
 
 PROJECTS.forEach((project) => Object.assign(project, PROJECT_PROOFS[project.slug] || {}));
@@ -467,7 +433,6 @@ const PROJECT_ORDER = [
   "card-rag",
   "resume-interview-agent",
   "traffic-accident",
-  "portfolio-website",
 ];
 
 PROJECTS.sort((a, b) => PROJECT_ORDER.indexOf(a.slug) - PROJECT_ORDER.indexOf(b.slug));
